@@ -1,25 +1,32 @@
 import React, {useState, useEffect} from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.scss';
 import axios from 'axios';
+import SearchForm from './components/searchForm';
+import {Container}from 'react-bootstrap'
 
 
 // name ideas: Weatherology, Weatherly, Weathernetic, Weatherify, Weatherporium, Weather Emporium, weatheriom, thera
 
+//before moving to production, change.
 const Key = process.env.REACT_APP_KEY
 
 function App() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const[weather, setWeather] = useState(null);
+  const[location, setLocation] = useState(null)
 
 
   // `api.openweathermap.org/data/2.5/weather?q={city name}&APPID=${Key}`
   const fetchWeather = () => {
     setLoading(true)
+    //TODO: Need to be able to dynamically search cities
     axios
       .get(`https://api.openweathermap.org/data/2.5/weather?q=denver&APPID=${Key}&units=imperial`)
         .then(res => {
           console.log("response",res.data)
+          setLocation(res.data.name)
           setWeather(res.data)
           setLoading(false);
         })
@@ -29,6 +36,10 @@ function App() {
           setLoading(false);
         })
   }
+
+  // const searchCity = (city) => {
+    
+  // }
 
   useEffect(() => {
     fetchWeather()
@@ -48,11 +59,15 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Weatheria</h1>
-      <div>
+      <Container>
+        <h1>Weatheria</h1>
+        <SearchForm/>
+        {/* Bootstrap Card? */}
+        <p>{location}</p>
+        <p>{weather.main.temp}</p>
+      </Container>
+     
 
-      </div>
-      <p>{weather.main.temp}</p>
     </div>
   );
 }
