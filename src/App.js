@@ -34,10 +34,12 @@ function App() {
     fetchWeather()
   }, []);
 
+  //puases the application here if there is an error
   if(error) {
     return <div>Oops. I'm sorry but something went wrong!</div>
   }
-
+  
+  //Pauses app here had displays loading until data is fetched
   if(loading) {
     return(
       <div>Loading...</div>
@@ -48,7 +50,7 @@ function App() {
     <div className="App">
       <h1>Weatheria</h1>
       <div>
-        
+
       </div>
       <p>{weather.main.temp}</p>
     </div>
