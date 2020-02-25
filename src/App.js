@@ -3,10 +3,11 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.scss';
 import axios from 'axios';
 import SearchForm from './components/searchForm';
-import {Container}from 'react-bootstrap'
+import Weather from './components/weather';
+import {Container}from 'react-bootstrap';
 
 
-// name ideas: Weatherology, Weatherly, Weathernetic, Weatherify, Weatherporium, Weather Emporium, weatheriom, thera
+// name ideas: Weatherology, Weatherly, Weathernetic, Weatherify, Weatherporium, Weather Emporium, weatherium, thera
 
 //before moving to production, change.
 const Key = process.env.REACT_APP_KEY
@@ -14,21 +15,17 @@ const Key = process.env.REACT_APP_KEY
 function App() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const[weather, setWeather] = useState(null);
-  const[location, setLocation] = useState(null)
-
-  
+  const[data, setData] = useState([]);
 
   // `api.openweathermap.org/data/2.5/weather?q={city name}&APPID=${Key}`
-  const fetchWeather = (searchValue) => {
+  const fetchWeather = () => {
     setLoading(true)
     //TODO: Need to be able to dynamically search cities
     axios
-      .get(`https://api.openweathermap.org/data/2.5/weather?q=${searchValue}&APPID=${Key}&units=imperial`)
+      .get(`https://api.openweathermap.org/data/2.5/weather?q=London&APPID=${Key}&units=imperial`)
         .then(res => {
-          console.log("response",res.data)
-          // setLocation(res.data.name)
-          setWeather(res.data)
+          // console.log("response",res.data)
+          setData(res.data)
           setLoading(false);
         })
         .catch(err => {
@@ -38,12 +35,26 @@ function App() {
         })
   }
 
-  // const searchCity = (city) => {
-    
-  // }
+  // fetches city from SearchForm user input
+  const searchCity = (city) => {
+    setLoading(true)
+    //TODO: Need to be able to dynamically search cities
+    axios
+      .get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=${Key}&units=imperial`)
+        .then(res => {
+          // console.log("response",res.data)
+          setData(res.data)
+          setLoading(false);
+        })
+        .catch(err => {
+          console.log("Error", err)
+          setError(error)
+          setLoading(false);
+        })
+  }
 
   useEffect(() => {
-    fetchWeather(SearchForm)
+    fetchWeather();
   }, []);
 
   //pauses the application here if there is an error
@@ -61,22 +72,12 @@ function App() {
   return (
     <div className="App">
       <Container>
-        <h1>Weatheria</h1>
-        <SearchForm search={fetchWeather}/>
-        {/* {
-          (weather.name === !null )
-          ?
-          <p>Please enter a City</p>
-          :
-          <div>
-            <p>{weather.name}</p>
-          </div>
-        } */}
-        {/* Bootstrap Card? */}
-        {/* <p>{weather.name}</p> */}
-        {/* <p>{weather.main.temp}</p> */}
+        <h1>Weatherify</h1>
+        <SearchForm search={searchCity}/>
+        <Weather data = {data}/>
+        {/* <p>{weather.name}</p>
+        <p>{Math.round(weather.main.temp)}&deg;</p> */}
       </Container>
-     
 
     </div>
   );
