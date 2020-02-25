@@ -17,16 +17,17 @@ function App() {
   const[weather, setWeather] = useState(null);
   const[location, setLocation] = useState(null)
 
+  
 
   // `api.openweathermap.org/data/2.5/weather?q={city name}&APPID=${Key}`
-  const fetchWeather = () => {
+  const fetchWeather = (searchValue) => {
     setLoading(true)
     //TODO: Need to be able to dynamically search cities
     axios
-      .get(`https://api.openweathermap.org/data/2.5/weather?q=denver&APPID=${Key}&units=imperial`)
+      .get(`https://api.openweathermap.org/data/2.5/weather?q=${searchValue}&APPID=${Key}&units=imperial`)
         .then(res => {
           console.log("response",res.data)
-          setLocation(res.data.name)
+          // setLocation(res.data.name)
           setWeather(res.data)
           setLoading(false);
         })
@@ -42,10 +43,10 @@ function App() {
   // }
 
   useEffect(() => {
-    fetchWeather()
+    fetchWeather(SearchForm)
   }, []);
 
-  //puases the application here if there is an error
+  //pauses the application here if there is an error
   if(error) {
     return <div>Oops. I'm sorry but something went wrong!</div>
   }
@@ -61,10 +62,19 @@ function App() {
     <div className="App">
       <Container>
         <h1>Weatheria</h1>
-        <SearchForm/>
+        <SearchForm search={fetchWeather}/>
+        {/* {
+          (weather.name === !null )
+          ?
+          <p>Please enter a City</p>
+          :
+          <div>
+            <p>{weather.name}</p>
+          </div>
+        } */}
         {/* Bootstrap Card? */}
-        <p>{location}</p>
-        <p>{weather.main.temp}</p>
+        {/* <p>{weather.name}</p> */}
+        {/* <p>{weather.main.temp}</p> */}
       </Container>
      
 

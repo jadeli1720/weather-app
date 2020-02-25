@@ -1,13 +1,39 @@
-import React from "react";
+import React, {useState} from "react";
 import {Form, Button }from 'react-bootstrap'
 
-const SearchForm = () => {
+const SearchForm = (props) => {
+    const[searchLocation, setSearchLocation] = useState("")
+    console.log('form', searchLocation)
+    
+    const handleSearch = (e) => {
+        setSearchLocation(e.target.value)
+    }
+
+    const resetForm = () => {
+        setSearchLocation("")
+    }
+
+    const submitSearch = (e) => {
+        e.preventDefault();
+        props.city(searchLocation);
+        resetForm();
+    }
+
     return(
-        <Form>
+        <Form onSubmit={submitSearch} >
             <Form.Group>
-                <Form.Control type="text" name="city" placeholder="City"></Form.Control>
+                <Form.Control 
+                    type="text" 
+                    name="city" 
+                    placeholder="City"
+                    value={searchLocation}
+                    onChange={handleSearch}
+                    ></Form.Control>
             </Form.Group>
-            <Button type="submit">
+            <Button 
+                type="submit"
+                value="Search"
+            >
                 Get Weather
             </Button>
         </Form>
