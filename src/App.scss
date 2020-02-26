@@ -1,7 +1,17 @@
 @import "~bootstrap/scss/bootstrap.scss";
 
+*{
+    box-sizing: border-box;
+}
+
 body {
     margin: 0;
+    width: 100%;
+    height: 100%;
     font-family: 'Helvetica', 'Helvetica Nueue', sans-serif;
     font-size: 100%;
+}
+
+.icon {
+    width: 25%;
 }

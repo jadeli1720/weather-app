@@ -18,11 +18,12 @@ function App() {
   const[data, setData] = useState([]);
 
   // `api.openweathermap.org/data/2.5/weather?q={city name}&APPID=${Key}`
+
   const fetchWeather = () => {
     setLoading(true)
     //TODO: Need to be able to dynamically search cities
     axios
-      .get(`https://api.openweathermap.org/data/2.5/weather?q=London&APPID=${Key}&units=imperial`)
+      .get(`https://api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=${Key}&units=imperial`)
         .then(res => {
           // console.log("response",res.data)
           setData(res.data)
@@ -35,8 +36,8 @@ function App() {
         })
   }
 
-  // fetches city from SearchForm user input
-  const searchCity = (city) => {
+  // fetches city from SearchForm user input --> Is there away to use async await with if statement
+  const searchCity = (city, country) => {
     setLoading(true)
     //TODO: Need to be able to dynamically search cities
     axios
