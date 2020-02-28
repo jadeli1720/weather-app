@@ -5,8 +5,8 @@ import DateDisplay from './date'
 
 const Weather = ({data}) => {
 
-    const tempRound = (temp) => {
-        return Math.round(temp)
+    const mathRound = (num) => {
+        return Math.round(num)
     }
 
     const time = (unix_timestamp) => {
@@ -36,7 +36,11 @@ const Weather = ({data}) => {
         return formattedTime
     }
 
-    console.log("Time", time(data.sys.sunset))
+    const wind = (degrees) => {
+
+    }
+
+    // console.log("Time", time(data.sys.sunset))
 
     // console.log("Temp",tempRound(data.main.temp))
     return (
@@ -48,31 +52,54 @@ const Weather = ({data}) => {
                     <DateDisplay /> 
                 </div>
                 
-                <div className="temp" >
+                <div className="temp p-3" >
                     <div className="temp-top" >
                         {/* Need to use different Icons. These aren't the best*/}
                         <img  src={`http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`} alt='weather icon' />
-                        <h1 className="pt-2 ml-2">{tempRound(data.main.temp)}&deg;</h1>
+                        <h1 className="pt-2 ml-2">{mathRound(data.main.temp)}&deg;</h1>
                     </div>
                     <div className="temp-mid" >
-                        <p>{tempRound(data.main.temp_max)}&deg;/ {tempRound(data.main.temp_min)}&deg;</p>
-                        <p>Feels Like: {tempRound(data.main.feels_like)}&deg; </p>
+                        <p>{mathRound(data.main.temp_max)}&deg;/ {mathRound(data.main.temp_min)}&deg;</p>
+                        <p>Feels Like: {mathRound(data.main.feels_like)}&deg; </p>
                     </div>
-                    <div className="temp-btm mt-4" >
-                        <p className="text-center">{data.weather[0].description}</p>
+                    <div className="temp-btm mt-3" >
+                        <p className="text-center text-capitalize">{data.weather[0].description}</p>
                     </div>
-                    
-                    
                 </div>
+                <div className=" row metrics mt-3 " >
+                    <div className="col-2 column-1">
+                        <div className="placeholder"></div>
+                    </div>
+                    <div className="col-4 column-2">
+                        <p className="m-0" >direction</p>
+                        <p className="m-0" >{mathRound(data.wind.speed)}</p>
+                    </div>
+                    <div className="col-2 column-1">
+                        <div className="placeholder"></div>
+                    </div>
+                    <div className="col-4 column-2">
+                        <p className="m-0" >Humidity</p>
+                        <p className="m-0" >{mathRound(data.main.humidity)}%</p>
+                    </div>
+                </div>
+                <div className=" row metrics mt-3 " >
+                    <div className="col-2 column-1">
+                        <div className="placeholder"></div>
+                    </div>
+                    <div className="col-4 column-2">
+                        <p className="m-0" >Sunrise</p>
+                        <p className="m-0" >{time(data.sys.sunrise)}</p>
+                    </div>
+                    <div className="col-2 column-1">
+                        <div className="placeholder"></div>
+                    </div>
+                    <div className="col-4 column-2">
+                        <p className="m-0" >Sunset</p>
+                        <p className="m-0" >{time(data.sys.sunset)}%</p>
+                    </div>
+                </div>
+                {/* Below could be used to determine icons and or icons */}
                 {/* <p>{data.weather[0].main}</p> */}
-                {/* <p className="temp" >{tempRound(data.main.temp)}&deg;</p> */}
-                
-                
-                
-                <p>Humidity: {data.main.humidity}%</p>
-                {/* <p>{data.timezone}</p> */}
-                <p>{time(data.sys.sunrise)} </p>
-                <p>{time(data.sys.sunset)} </p>
             </Card>
         </div> 
     );

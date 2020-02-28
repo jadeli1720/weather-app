@@ -7,10 +7,6 @@ import Weather from './components/weather';
 import {Container}from 'react-bootstrap';
 
 
-
-
-// name ideas: Weatherology, Weatherly, Weathernetic, Weatherify, Weatherporium, Weather Emporium, weatherium, thera
-
 //before moving to production, change.
 const Key = process.env.REACT_APP_KEY
 // const Key = process.env.REACT_APP_WEATHERBIT_KEY
@@ -26,7 +22,10 @@ function App() {
   //Weatherbit:
   //`https://api.weatherbit.io/v2.0/current?city=denver,co&key=${Key}&units=I`
 
-  //use geoLocation? to set this up?
+  //use geoLocation? to set this up? usePosition() --> yarn add use-position
+  // https://itnext.io/creating-react-useposition-hook-for-getting-browsers-geolocation-2f27fc1d96de
+  //https://github.com/trekhleb/use-position/blob/master/src/usePosition.js
+  //https://trekhleb.github.io/use-position/?path=/story/useposition--fetching
   const fetchWeather = () => {
     setLoading(true)
     //TODO: Need to be able to dynamically search cities
@@ -89,7 +88,7 @@ function App() {
       <Container>
         <h1>Weatherify</h1>
         <SearchForm search={searchCity}/>
-        {console.log("Data", data)}
+        {/* {console.log("Data", data)} */}
         {/* {
           loading ? (
               <div>Loading...</div>

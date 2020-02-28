@@ -13,22 +13,12 @@ body {
     font-size: 100%;
 }
 
-
-.card {
-    // display: flex;
-    // justify-content: center;
-}
-
 .date {
     font-size: .75rem;
 }
 
 .temp{
     border: 1px solid blue;
-    
-    // justify-content: center;
-    // align-items: center;
-    
     .temp-top{
         display: flex;
         flex-direction: row;
@@ -61,17 +51,28 @@ body {
         p{
             font-size: 1.0rem;
         }
+    } 
+}
+
+.metrics{
+    border: 1px solid fuchsia;
+
+    .column-1{
+        .placeholder{
+            border:1px solid rgb(18, 23, 92);
+            background-color: silver;
+            width:50px;
+            height:50px;
+        }
     }
 
-    
-
+    .column-2{
+        .placeholder{
+            border:1px solid purple;
+            background-color: silver;
+            width:50px;
+            height:50px;
+        }
+    }
 }
 
-
-
-
-.description {
-    // border: 1px solid orangered;
-    text-transform: capitalize;
-
-}
