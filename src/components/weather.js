@@ -36,13 +36,22 @@ const Weather = ({data}) => {
         return formattedTime
     }
 
-    const wind = (degrees) => {
-
+    const degToCompass = (degrees) => {
+        //there is an angle change at every 22.5 degrees. direction swap after 11.25 degrees for intermediary
+        //divide degrees by angle change --> Math.floor((220/ 22.5) + 0.5) = 10
+        let value = Math.floor((degrees/ 22.5) + 0.5);
+        //array of 16 cardinal directions
+        const compassArr = ["N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S", "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW"];
+        
+        //return the compassArr at the index of value / index of 16 --> compassArr[(10 % 16)] = "SW"
+        return compassArr[(value % 16)];
     }
-
+    
+    // console.log("Temp",mathRound(data.main.temp))
     // console.log("Time", time(data.sys.sunset))
+    // console.log("Humidity",degToCompass(data.wind.deg))
 
-    // console.log("Temp",tempRound(data.main.temp))
+    
     return (
         <div className="card-container">
             
@@ -71,7 +80,7 @@ const Weather = ({data}) => {
                         <div className="placeholder"></div>
                     </div>
                     <div className="col-4 column-2">
-                        <p className="m-0" >direction</p>
+                        <p className="m-0" >{degToCompass(data.wind.deg)}</p>
                         <p className="m-0" >{mathRound(data.wind.speed)}</p>
                     </div>
                     <div className="col-2 column-1">
@@ -95,7 +104,7 @@ const Weather = ({data}) => {
                     </div>
                     <div className="col-4 column-2">
                         <p className="m-0" >Sunset</p>
-                        <p className="m-0" >{time(data.sys.sunset)}%</p>
+                        <p className="m-0" >{time(data.sys.sunset)}</p>
                     </div>
                 </div>
                 {/* Below could be used to determine icons and or icons */}
