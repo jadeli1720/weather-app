@@ -1,31 +1,39 @@
 import React, {useState, useEffect} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './App.scss';
 import axios from 'axios';
+import './App.scss';
 import SearchForm from './components/searchForm';
 import Weather from './components/weather';
 import {Container}from 'react-bootstrap';
+
+
 
 
 // name ideas: Weatherology, Weatherly, Weathernetic, Weatherify, Weatherporium, Weather Emporium, weatherium, thera
 
 //before moving to production, change.
 const Key = process.env.REACT_APP_KEY
+// const Key = process.env.REACT_APP_WEATHERBIT_KEY
 
 function App() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const[data, setData] = useState([]);
+  
+  //Open Weather:
+  // `https://api.openweathermap.org/data/2.5/weather?q=denver,us&APPID=${Key}&units=imperial`
 
-  // `api.openweathermap.org/data/2.5/weather?q={city name}&APPID=${Key}`
+  //Weatherbit:
+  //`https://api.weatherbit.io/v2.0/current?city=denver,co&key=${Key}&units=I`
 
+  //use geoLocation? to set this up?
   const fetchWeather = () => {
     setLoading(true)
     //TODO: Need to be able to dynamically search cities
     axios
-      .get(`https://api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=${Key}&units=imperial`)
+      .get(`https://cors-anywhere.herokuapp.com/https://api.openweathermap.org/data/2.5/weather?q=denver,us&APPID=${Key}&units=imperial`)
         .then(res => {
-          // console.log("response",res.data)
+          console.log("response",res.data)
           setData(res.data)
           setLoading(false);
         })
@@ -36,6 +44,12 @@ function App() {
         })
   }
 
+   //Open Weather:
+  // `https://api.openweathermap.org/data/2.5/weather?q=${city},${country}&APPID=${Key}&units=imperial`
+
+  //Weatherbit:
+  //`https://api.weatherbit.io/v2.0/current?city=${city}&country=${country}&key=${Key}&units=I`
+
   // fetches city from SearchForm user input --> Is there away to use async await with if statement
   const searchCity = (city, country) => {
     setLoading(true)
@@ -43,7 +57,7 @@ function App() {
     axios
       .get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=${Key}&units=imperial`)
         .then(res => {
-          // console.log("response",res.data)
+          console.log("response",res.data)
           setData(res.data)
           setLoading(false);
         })
@@ -75,9 +89,19 @@ function App() {
       <Container>
         <h1>Weatherify</h1>
         <SearchForm search={searchCity}/>
+        {console.log("Data", data)}
+        {/* {
+          loading ? (
+              <div>Loading...</div>
+          )
+          : (
+            console.log("Did we get the data?", data)
+            // <Weather data = {data}/>
+          )
+        } */}
         <Weather data = {data}/>
-        {/* <p>{weather.name}</p>
-        <p>{Math.round(weather.main.temp)}&deg;</p> */}
+        {/* <p>{data.temp}</p> */}
+        {/* <p>{Math.round(weather.main.temp)}&deg;</p> */}
       </Container>
 
     </div>
