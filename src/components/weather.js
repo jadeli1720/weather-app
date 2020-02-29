@@ -5,6 +5,8 @@ import DateDisplay from './date'
 
 const Weather = ({data}) => {
 
+    //Move functions into a utlis folder and helper function file?
+
     const mathRound = (num) => {
         return Math.round(num)
     }
