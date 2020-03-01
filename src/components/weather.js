@@ -1,4 +1,5 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
+import {mathRound , time, fetchIcons, degToCompass} from '../utils/index'
 import {Card}from 'react-bootstrap';
 import DateDisplay from './date'
 
@@ -8,57 +9,17 @@ import "weather-icons/css/weather-icons.css";
 
 
 const Weather = ({data}) => {
+    const [weatherIcon, setWeatherIcon] = useState('wi-day-sunny')
 
-    //Move functions into a utlis folder and helper function file?
-    //Rounding decimals to whole numbers
-    const mathRound = (num) => {
-        return Math.round(num)
-    }
-
-    //converting unix timestamp into hh/mm format
-    const time = (unix_timestamp) => {
-        
-        let time = new Date(unix_timestamp * 1000)
-        let hours = time.getHours()
-        let minutes =  time.getMinutes()
-        let am_pm = time.getHours() >= 12 ? "pm" : "am"
-
-        // if(hours < 10) {
-        //     hours = "0" + hours
-        // } 
-        if (minutes < 10){
-            minutes = "0" + minutes;
-        }
-        let mid = "pm"
-        if(hours === 0){
-            hours = 12
-        }else if (hours > 12){
-            hours = hours%12;
-            mid='am';
-        }
-        
-        let formattedTime = hours + ':' + minutes + ' ' + am_pm       
-        // console.log("Formatted", formattedTime)
-
-        return formattedTime
-    }
-
-    //Converting degrees to Compass directions
-    const degToCompass = (degrees) => {
-        //there is an angle change at every 22.5 degrees. direction swap after 11.25 degrees for intermediary
-        //divide degrees by angle change --> Math.floor((220/ 22.5) + 0.5) = 10
-        let value = Math.floor((degrees/ 22.5) + 0.5);
-        //array of 16 cardinal directions
-        const compassArr = ["N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S", "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW"];
-        
-        //return the compassArr at the index of value / index of 16 --> compassArr[(10 % 16)] = "SW"
-        return compassArr[(value % 16)];
-    }
-    
     // console.log("Temp",mathRound(data.main.temp))
     // console.log("Time", time(data.sys.sunset))
     // console.log("Humidity",degToCompass(data.wind.deg))
-
+    
+    useEffect(() => {
+        if (data) {
+            let weather = fetchIcons(data.weather.id,  )
+        }
+    }, []);
     
     return (
         <div className="card-container">
