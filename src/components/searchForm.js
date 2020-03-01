@@ -10,12 +10,12 @@ const SearchForm = (props) => {
     
     const handleSearch = (e) => {
         // const updateLocation = {...searchLocation,[e.target.name]: e.target.value }
-        // console.log(
-        //     "handleChange",
-        //     e.target.name,
-        //     e.target.value,
-        //     updateLocation
-        //   );
+        // // console.log(
+        // //     "handleChange",
+        // //     e.target.name,
+        // //     e.target.value,
+        // //     updateLocation
+        // // );
         // setSearchLocation(updateLocation);
         setSearchLocation(e.target.value)
     }
@@ -58,7 +58,7 @@ const SearchForm = (props) => {
                 </Form.Group> */}
                 <div className="col-3">
                     <Button type="submit" value="Search">
-                        Get Weather
+                        Weatherify
                     </Button>
                 </div>
             </Form.Row>
