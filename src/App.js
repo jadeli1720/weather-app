@@ -19,7 +19,7 @@ function App() {
   //Open Weather:
   // `https://api.openweathermap.org/data/2.5/weather?q=denver,us&APPID=${Key}&units=imperial`
 
-  //Weatherbit:
+  //Weatherbit: to get state have to also include country
   //`https://api.weatherbit.io/v2.0/current?city=denver,co&key=${Key}&units=I`
 
   //use geoLocation? to set this up? usePosition() --> yarn add use-position

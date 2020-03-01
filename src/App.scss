@@ -13,12 +13,21 @@ body {
     font-size: 100%;
 }
 
+.dateDisplay {
+    margin: 0px;
+
+    h4{
+        margin: 0px;
+    }
+}
+
 .date {
     font-size: .75rem;
+
 }
 
 .temp{
-    border: 1px solid blue;
+    // border: 1px solid blue;
     .temp-top{
         display: flex;
         flex-direction: row;
@@ -55,24 +64,31 @@ body {
 }
 
 .metrics{
-    border: 1px solid fuchsia;
-
+    // border:1px solid red;
     .column-1{
-        .placeholder{
-            border:1px solid rgb(18, 23, 92);
-            background-color: silver;
+        padding: 0 20px 0 15px;
+        .icons{
+            display: flex;
+            justify-content: center;
+            // border:1px solid red;
+            align-items: center;
             width:50px;
-            height:50px;
+            height:35px;
+
+            i{
+                
+                font-size: 25px;
+            }
         }
     }
 
     .column-2{
-        .placeholder{
-            border:1px solid purple;
-            background-color: silver;
-            width:50px;
-            height:50px;
-        }
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        font-size: .80rem;
+        padding: 0 0 0 20px;
+        border-left: .25px solid rgb(234, 236, 255);
     }
 }
 

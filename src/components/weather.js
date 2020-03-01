@@ -1,16 +1,21 @@
 import React from 'react';
-import {Card, Row, Col}from 'react-bootstrap';
+import {Card}from 'react-bootstrap';
 import DateDisplay from './date'
+
+// Icons from git project --> https://github.com/erikflowers/weather-icons
+import "weather-icons/css/weather-icons.css";
+
 
 
 const Weather = ({data}) => {
 
     //Move functions into a utlis folder and helper function file?
-
+    //Rounding decimals to whole numbers
     const mathRound = (num) => {
         return Math.round(num)
     }
 
+    //converting unix timestamp into hh/mm format
     const time = (unix_timestamp) => {
         
         let time = new Date(unix_timestamp * 1000)
@@ -38,6 +43,7 @@ const Weather = ({data}) => {
         return formattedTime
     }
 
+    //Converting degrees to Compass directions
     const degToCompass = (degrees) => {
         //there is an angle change at every 22.5 degrees. direction swap after 11.25 degrees for intermediary
         //divide degrees by angle change --> Math.floor((220/ 22.5) + 0.5) = 10
@@ -58,9 +64,9 @@ const Weather = ({data}) => {
         <div className="card-container">
             
             <Card className="card p-3" >
-                <div className="" >
+                <div className="dateDisplay" >
                     <h4>{data.name}, {data.sys.country}</h4>
-                    <DateDisplay /> 
+                    <DateDisplay className="" /> 
                 </div>
                 
                 <div className="temp p-3" >
@@ -69,8 +75,9 @@ const Weather = ({data}) => {
                         <img  src={`http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`} alt='weather icon' />
                         <h1 className="pt-2 ml-2">{mathRound(data.main.temp)}&deg;</h1>
                     </div>
-                    <div className="temp-mid" >
-                        <p>{mathRound(data.main.temp_max)}&deg;/ {mathRound(data.main.temp_min)}&deg;</p>
+                    <div className="temp-mid " >
+                        <p className="pr-2" >{mathRound(data.main.temp_max)}&deg;/ {mathRound(data.main.temp_min)}&deg;</p>
+                        
                         <p>Feels Like: {mathRound(data.main.feels_like)}&deg; </p>
                     </div>
                     <div className="temp-btm mt-3" >
@@ -79,14 +86,18 @@ const Weather = ({data}) => {
                 </div>
                 <div className=" row metrics mt-3 " >
                     <div className="col-2 column-1">
-                        <div className="placeholder"></div>
+                        <div className="icons  ">
+                            <i className="wi wi-small-craft-advisory"></i>
+                        </div>
                     </div>
                     <div className="col-4 column-2">
                         <p className="m-0" >{degToCompass(data.wind.deg)}</p>
                         <p className="m-0" >{mathRound(data.wind.speed)}</p>
                     </div>
                     <div className="col-2 column-1">
-                        <div className="placeholder"></div>
+                        <div className="icons">
+                        <i className="wi wi-raindrop"></i>
+                        </div>
                     </div>
                     <div className="col-4 column-2">
                         <p className="m-0" >Humidity</p>
@@ -95,14 +106,18 @@ const Weather = ({data}) => {
                 </div>
                 <div className=" row metrics mt-3 " >
                     <div className="col-2 column-1">
-                        <div className="placeholder"></div>
+                        <div className="icons ">
+                            <i className="wi wi-sunrise"></i>
+                        </div>
                     </div>
                     <div className="col-4 column-2">
                         <p className="m-0" >Sunrise</p>
                         <p className="m-0" >{time(data.sys.sunrise)}</p>
                     </div>
                     <div className="col-2 column-1">
-                        <div className="placeholder"></div>
+                        <div className="icons ">
+                            <i className="wi wi-sunset"></i>
+                        </div>
                     </div>
                     <div className="col-4 column-2">
                         <p className="m-0" >Sunset</p>
