@@ -40,8 +40,12 @@ body {
             font-weight: 300;
         }
 
-        img{
-            margin: 0px;
+        .weatherIcon{
+            font-size: 3.8rem;
+            i{
+                font-weight: lighter;
+            }
+            
         }
     }
 

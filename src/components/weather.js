@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {mathRound , time, fetchIcons, degToCompass} from '../utils/index'
+import {mathRound , sunTime, degToCompass, fetchIcons} from '../utils/index'
 import {Card}from 'react-bootstrap';
 import DateDisplay from './date'
 
@@ -10,16 +10,20 @@ import "weather-icons/css/weather-icons.css";
 
 const Weather = ({data}) => {
     const [weatherIcon, setWeatherIcon] = useState('wi-day-sunny')
+        
+    // console.log("Testing weather icons:",fetchIcons(data.weather[0].id))
 
-    // console.log("Temp",mathRound(data.main.temp))
-    // console.log("Time", time(data.sys.sunset))
-    // console.log("Humidity",degToCompass(data.wind.deg))
+    // console.log("Sunrise and Sunset", sunTime(data.sys.sunset))
+    // console.log("sunTime of Day",degToCompass(data.wind.deg))
     
     useEffect(() => {
         if (data) {
-            let weather = fetchIcons(data.weather.id,  )
+            let weather = fetchIcons(data.weather[0].id)
+            return setWeatherIcon(weather)
         }
     }, []);
+
+    // console.log("Setting Weather", weatherIcon)
     
     return (
         <div className="card-container">
@@ -33,7 +37,10 @@ const Weather = ({data}) => {
                 <div className="temp p-3" >
                     <div className="temp-top" >
                         {/* Need to use different Icons. These aren't the best*/}
-                        <img  src={`http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`} alt='weather icon' />
+                        <div className="weatherIcon mr-1">
+                            <i className={`wi ${weatherIcon}`}></i>
+                        </div>
+                        {/* <img  src={`http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`} alt='weather icon' /> */}
                         <h1 className="pt-2 ml-2">{mathRound(data.main.temp)}&deg;</h1>
                     </div>
                     <div className="temp-mid " >
@@ -73,7 +80,7 @@ const Weather = ({data}) => {
                     </div>
                     <div className="col-4 column-2">
                         <p className="m-0" >Sunrise</p>
-                        <p className="m-0" >{time(data.sys.sunrise)}</p>
+                        <p className="m-0" >{sunTime(data.sys.sunrise)}</p>
                     </div>
                     <div className="col-2 column-1">
                         <div className="icons ">
@@ -82,7 +89,7 @@ const Weather = ({data}) => {
                     </div>
                     <div className="col-4 column-2">
                         <p className="m-0" >Sunset</p>
-                        <p className="m-0" >{time(data.sys.sunset)}</p>
+                        <p className="m-0" >{sunTime(data.sys.sunset)}</p>
                     </div>
                 </div>
                 {/* Below could be used to determine icons and or icons */}
