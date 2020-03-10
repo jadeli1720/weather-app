@@ -8,7 +8,7 @@ import "weather-icons/css/weather-icons.css";
 
 
 
-const Weather = ({ data }) => {
+const DailyForcast = ({ data }) => {
     const [weatherIcon, setWeatherIcon] = useState('wi-day-sunny')
 
     // console.log("Testing weather icons:",fetchIcons(data.weather[0].id))
@@ -104,4 +104,4 @@ const Weather = ({ data }) => {
     );
 };
 
-export default Weather
+export default DailyForcast;
