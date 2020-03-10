@@ -15,17 +15,10 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const[data, setData] = useState([]);
+  const[forcastData, setForcastData] = useState([])
   
-  //TODO: consider finding initial location using geolocation and then search using zip code to account to for city in multiple states or countries
 
-  //Open Weather:
-  // `https://api.openweathermap.org/data/2.5/weather?q=denver,us&APPID=${Key}&units=imperial`
 
-  //TODO:
-  //use geoLocation? to set this up? usePosition() --> yarn add use-position
-  // https://itnext.io/creating-react-useposition-hook-for-getting-browsers-geolocation-2f27fc1d96de
-  //https://github.com/trekhleb/use-position/blob/master/src/usePosition.js
-  //https://trekhleb.github.io/use-position/?path=/story/useposition--fetching
   const fetchWeather = () => {
     setLoading(true)
     //TODO: Need to be able to dynamically search cities
@@ -43,29 +36,38 @@ function App() {
         })
   }
 
-   //Open Weather:
-  // `https://api.openweathermap.org/data/2.5/weather?q=${city},${country}&APPID=${Key}&units=imperial`
-
-  //Weatherbit:
-  //`https://api.weatherbit.io/v2.0/current?city=${city}&country=${country}&key=${Key}&units=I`
+  // api.openweathermap.org/data/2.5/forecast/daily?q=${city}&cnt=7&appid=${Key}&units=imperial
 
   // fetches city from SearchForm user input --> Is there away to use async await with if statement
-  const searchCity = (city, country) => {
+  const searchCity = (city) => {
     setLoading(true)
-    //TODO: Need to be able to dynamically search cities
-    axios
-      .get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=${Key}&units=imperial`)
-        .then(res => {
-          console.log("response",res.data)
-          setData(res.data)
-          setLoading(false);
-        })
-        .catch(err => {
+
+    // api urls
+    let fetchDay = `https://cors-anywhere.herokuapp.com/https://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=${Key}&units=imperial`
+    let fetchWeek = `https://cors-anywhere.herokuapp.com/https://api.openweathermap.org/data/2.5/forecast?q=${city}&cnt=7&appid=${Key}&units=imperial`
+    
+    //get requests
+    const requestDay = axios.get(fetchDay);
+    const requestWeek = axios.get(fetchWeek)
+
+    axios.all([requestDay, requestWeek])
+      .then(axios.spread((...res) => {
+        const resDay = res[0]
+        console.log("Daily forcast", resDay.data)
+        const resWeek = res[1]
+        console.log("Weekly forcast", resWeek.data)
+        setData(resDay.data)
+        setForcastData(resWeek.data)
+        setLoading(false);
+      }))
+      .catch(err => {
           console.log("Error", err)
           setError(error)
           setLoading(false);
         })
+      
   }
+
 
   useEffect(() => {
     fetchWeather();
@@ -88,19 +90,9 @@ function App() {
       <Container>
         <h1>Weatherify</h1>
         <SearchForm search={searchCity}/>
-        {/* {console.log("Data", data)} */}
-        {/* {
-          loading ? (
-              <div>Loading...</div>
-          )
-          : (
-            console.log("Did we get the data?", data)
-            // <Weather data = {data}/>
-          )
-        } */}
         <Weather data = {data}/>
-        {/* <p>{data.temp}</p> */}
-        {/* <p>{Math.round(weather.main.temp)}&deg;</p> */}
+        {console.log("Daily Data?", data)}
+        {console.log("Weekly Data?", forcastData)}
       </Container>
 
     </div>
