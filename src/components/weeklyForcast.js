@@ -13,8 +13,13 @@ const WeeklyForcast = ({weeklyData}) => {
         // }
     }, []);
 
+    //TODO's:
+    //need to map through the array of forcasts
+    //possibly make another child component of this one to format single data. Move helper functions there.
+    //implement one of the react sliders
+     // overall will need to decide on layout when weather icon is on bigger screen sizes like tablets. Maybe limit it to those sizes and make it responsive down to phone screens. This may effect the sliders.
     return (
-        <div>
+        <div className="card-container mt-3">
             This is the weekly forcast component
         </div>
     );
