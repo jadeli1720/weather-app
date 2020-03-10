@@ -1,32 +1,37 @@
+//should probably divide these up and import them to this file
+
+
 export const mathRound = num => {
-  return Math.round(num);
+    return Math.round(num);
 };
 
 //converting unix timestamp into hh/mm format from API
 export const sunTime = unix_timestamp => {
-  let time = new Date(unix_timestamp * 1000);
-  let hours = time.getHours();
-  let minutes = time.getMinutes();
-  let am_pm = time.getHours() >= 12 ? "pm" : "am";
 
-  // if(hours < 10) {
-  //     hours = "0" + hours
-  // }
-  if (minutes < 10) {
-    minutes = "0" + minutes;
-  }
-  let mid = "pm";
-  if (hours === 0) {
-    hours = 12;
-  } else if (hours > 12) {
-    hours = hours % 12;
-    mid = "am";
-  }
+    //this works according to my timezone. Not the cities timezone. We will need to somehow fix this to cities timezone. There is data.timezone = Shift in second from UTC
+    let time = new Date(unix_timestamp * 1000);
+    let hours = time.getHours();
+    let minutes = time.getMinutes();
+    let am_pm = time.getHours() >= 12 ? "pm" : "am";
 
-  let formattedTime = hours + ":" + minutes + " " + am_pm;
-  // console.log("Formatted", formattedTime)
+    // if(hours < 10) {
+    //     hours = "0" + hours
+    // }
+    if (minutes < 10) {
+        minutes = "0" + minutes;
+    }
+    let mid = "pm";
+    if (hours === 0) {
+        hours = 12;
+    } else if (hours > 12) {
+        hours = hours % 12;
+        mid = "am";
+    }
 
-  return formattedTime;
+    let formattedTime = hours + ":" + minutes + " " + am_pm;
+    // console.log("Formatted", formattedTime)
+
+    return formattedTime;
 };
 
 //Converting degrees to Compass directions
@@ -41,8 +46,10 @@ export const degToCompass = degrees => {
     return compassArr[value % 16];
 };
 
-//grabbing current time
+//grabbing current time --> need to pass argument in data.timezone from fetchIcons
 export const currentTime = () => {
+
+    //this works according to my timezone. Not the cities timezone. We will need to somehow fix this to cities timezone. There is data.timezone = Shift in second from UTC
     let today = new Date();
     let hours = today.getHours();
     let minutes = today.getMinutes();
@@ -70,8 +77,10 @@ export const currentTime = () => {
     return time;
 };
 
-//Fetching icons
+//Fetching icons --> pass in id and timezone shift to pass into currentTime?
+//Use this possibly --> https://www.npmjs.com/package/city-timezones
 export const fetchIcons = rangeId => {
+    //async await?
     let fetchTime = currentTime();
   // console.log("Today", fetchTime)
 

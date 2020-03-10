@@ -16,12 +16,12 @@ function App() {
   const [error, setError] = useState(null);
   const[data, setData] = useState([]);
   
+  //TODO: consider finding initial location using geolocation and then search using zip code to account to for city in multiple states or countries
+
   //Open Weather:
   // `https://api.openweathermap.org/data/2.5/weather?q=denver,us&APPID=${Key}&units=imperial`
 
-  //Weatherbit: to get state have to also include country
-  //`https://api.weatherbit.io/v2.0/current?city=denver,co&key=${Key}&units=I`
-
+  //TODO:
   //use geoLocation? to set this up? usePosition() --> yarn add use-position
   // https://itnext.io/creating-react-useposition-hook-for-getting-browsers-geolocation-2f27fc1d96de
   //https://github.com/trekhleb/use-position/blob/master/src/usePosition.js
