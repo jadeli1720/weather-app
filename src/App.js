@@ -103,8 +103,8 @@ function App() {
         <SearchForm search={searchCity}/>
         <DailyForcast data = {data}/>
         <WeeklyForcast  weeklyData ={forcastData}/>
-        {/* {console.log("Daily Data?", data)}
-        {console.log("Weekly Data?", forcastData)} */}
+        {/* {console.log("Daily Data?", data)} */}
+        {/* {console.log("Weekly Data?", forcastData)} */}
       </Container>
 
     </div>

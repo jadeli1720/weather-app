@@ -1,17 +1,21 @@
 import React, { useState, useEffect } from 'react';
 // import { mathRound, sunTime, degToCompass, fetchIcons } from '../utils/index'
 // import DateDisplay from './date'
+import Weekday from './weekday';
 
 const WeeklyForcast = ({weeklyData}) => {
     const [weatherIcon, setWeatherIcon] = useState('wi-day-sunny');
 
-    console.log('Weekly Component', weeklyData )
+    // const weekday = weeklyData.list;
+
+    console.log('Weekly Component', weeklyData.list )
     useEffect(() => {
         // if (data) {
         //     let weather = fetchIcons(data.weather[0].id)
         //     return setWeatherIcon(weather)
         // }
     }, []);
+
 
     //TODO's:
     //need to map through the array of forcasts
@@ -20,7 +24,14 @@ const WeeklyForcast = ({weeklyData}) => {
      // overall will need to decide on layout when weather icon is on bigger screen sizes like tablets. Maybe limit it to those sizes and make it responsive down to phone screens. This may effect the sliders.
     return (
         <div className="card-container mt-3">
-            This is the weekly forcast component
+            {weeklyData.list && weeklyData.list.map(day => 
+                <Weekday
+                    
+                    key={day.dt}
+                    daily = {day}
+                />
+            )}
+            
         </div>
     );
 };

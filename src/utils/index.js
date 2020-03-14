@@ -13,7 +13,8 @@ export const sunTime = unix_timestamp => {
     let hours = time.getHours();
     let minutes = time.getMinutes();
     let am_pm = time.getHours() >= 12 ? "pm" : "am";
-
+    
+    //Figuring out offset to consider tz
     // if(hours < 10) {
     //     hours = "0" + hours
     // }
@@ -27,6 +28,8 @@ export const sunTime = unix_timestamp => {
         hours = hours % 12;
         mid = "am";
     }
+
+    
 
     let formattedTime = hours + ":" + minutes + " " + am_pm;
     // console.log("Formatted", formattedTime)

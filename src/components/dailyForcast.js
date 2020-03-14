@@ -55,7 +55,7 @@ const DailyForcast = ({ data }) => {
                 </div>
                 {/* bottom row */}
                 <div className="metrics-row">
-                    <div className=" row metrics mt-3 " >
+                    <div className=" row metrics mt-3" >
                         <div className="col-2 column-1">
                             <div className="icons  ">
                                 <i className="wi wi-small-craft-advisory"></i>
@@ -86,7 +86,7 @@ const DailyForcast = ({ data }) => {
                             <p className="m-0" >{sunTime(data.sys.sunrise)}</p>
                         </div>
                         <div className="col-2 column-1">
-                            <div className="icons ">
+                            <div className="icons text-center ">
                                 <i className="wi wi-sunset"></i>
                             </div>
                         </div>
@@ -96,9 +96,6 @@ const DailyForcast = ({ data }) => {
                         </div>
                     </div>
                 </div>
-
-                {/* Below could be used to determine icons and or icons */}
-                {/* <p>{data.weather[0].main}</p> */}
             </Card>
         </div>
     );
