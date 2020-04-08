@@ -25,7 +25,7 @@ function App() {
     // TODO: change this to geolocation
     // api urls
     let fetchDay = `https://cors-anywhere.herokuapp.com/https://api.openweathermap.org/data/2.5/weather?q=denver,us&APPID=${Key}&units=imperial`
-    let fetchWeek = `https://cors-anywhere.herokuapp.com/https://api.openweathermap.org/data/2.5/forecast?q=denver,us&cnt=7&appid=${Key}&units=imperial`
+    let fetchWeek = `https://cors-anywhere.herokuapp.com/https://api.openweathermap.org/data/2.5/forecast?q=denver,us&appid=${Key}&units=imperial`
     
     //get requests
     const requestDay = axios.get(fetchDay);
@@ -55,7 +55,7 @@ function App() {
 
     // api urls
     let fetchDay = `https://cors-anywhere.herokuapp.com/https://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=${Key}&units=imperial`
-    let fetchWeek = `https://cors-anywhere.herokuapp.com/https://api.openweathermap.org/data/2.5/forecast?q=${city}&cnt=7&appid=${Key}&units=imperial`
+    let fetchWeek = `https://cors-anywhere.herokuapp.com/https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${Key}&units=imperial`
     
     //get requests
     const requestDay = axios.get(fetchDay);
