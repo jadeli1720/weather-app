@@ -6,6 +6,7 @@ import SearchForm from './components/searchForm';
 import DailyForcast from './components/dailyForcast';
 import {Container}from 'react-bootstrap';
 import WeeklyForcast from './components/weeklyForcast';
+import {sunTime} from './utils/index'
 
 
 //before moving to production, change.
@@ -15,11 +16,9 @@ const Key = process.env.REACT_APP_KEY
 function App() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const[data, setData] = useState([]);
-  const[forcastData, setForcastData] = useState([])
+  const[dailyData, setDailyData] = useState([]);
+  const[weeklyData, setWeeklyData] = useState([])
   
-
-
   const fetchWeather = () => {
     setLoading(true)
     // TODO: change this to geolocation
@@ -36,9 +35,9 @@ function App() {
         const resDay = res[0]
         // console.log("Daily forcast", resDay.data)
         const resWeek = res[1]
-        // console.log("Weekly forcast", resWeek.data)
-        setData(resDay.data)
-        setForcastData(resWeek.data)
+        console.log("Weekly forcast", resWeek.data.list)
+        setDailyData(resDay.data)
+        setWeeklyData(resWeek.data)
         setLoading(false);
       }))
       .catch(err => {
@@ -66,9 +65,9 @@ function App() {
         const resDay = res[0]
         // console.log("Daily forcast", resDay.data)
         const resWeek = res[1]
-        // console.log("Weekly forcast", resWeek.data)
-        setData(resDay.data)
-        setForcastData(resWeek.data)
+        console.log("Weekly forcast", resWeek.data)
+        setDailyData(resDay.data)
+        setWeeklyData(resWeek.data)
         setLoading(false);
       }))
       .catch(err => {
@@ -101,10 +100,10 @@ function App() {
       <Container>
         <h1>Weatherify</h1>
         <SearchForm search={searchCity}/>
-        <DailyForcast data = {data}/>
-        <WeeklyForcast  weeklyData ={forcastData}/>
-        {/* {console.log("Daily Data?", data)} */}
-        {/* {console.log("Weekly Data?", forcastData)} */}
+        <DailyForcast day = {dailyData}/>
+        <WeeklyForcast  week ={weeklyData}/>
+        {/* {console.log("Daily Data?", dailyData)} */}
+        {/* {console.log("Weekly Data?", showData(weeklyData.list))} */}
       </Container>
 
     </div>
