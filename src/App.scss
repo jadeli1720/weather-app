@@ -107,7 +107,22 @@ body {
     }
 }
 
-.forcast{
-    border: 1px solid salmon;
+.weeklyForcast {
+    display: flex;
+    flex-direction: row;
+
+    .forcast{
+        border: 1px solid salmon;
+        display: flex;
+        flex-direction: column;
+        
+    }
+
+    p{
+        margin:0;
+    }
+    
 }
+
+
 

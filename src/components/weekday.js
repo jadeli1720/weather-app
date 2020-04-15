@@ -1,19 +1,19 @@
 import React, { useState, useEffect } from 'react';
-import { mathRound,fetchWeekIcons } from '../utils/index'
+import { mathRound, fetchWeekIcons, sunTime, getDay } from '../utils/index'
 // import { mathRound, sunTime, degToCompass, fetchWeekIcons, getDay } from '../utils/index'
 
-const Weekday = (props) => {
+const Weekday = ({ day }) => {
 
     //not working properly. Getting night time icons during the daytime
     const [weatherIcon, setWeatherIcon] = useState('wi-day-sunny')
 
     useEffect(() => {
-        if (props.day) {
-            let weather = fetchWeekIcons(props.day.weather[0].id)
+        if (day) {
+            let weather = fetchWeekIcons(day.weather[0].id)
             return setWeatherIcon(weather)
         }
     }, []);
-    console.log("weekday componenent",props.day)
+    console.log("weekday component",sunTime(day.dt))
 
     // <p>{getDay(day.dt)}</p>
     
@@ -24,14 +24,12 @@ const Weekday = (props) => {
     // console.log("full day is", getDay(day.dt))
     // console.log("date?", day.dt_txt)
     return (
-        <div>
             <div className="forcast mb-2">
-                {console.log("Day component",props.day.main.temp)}
-                day
+                {/* {console.log("Day component",day.main.temp)} */}
+                <p>{getDay(day.dt)}</p>
                 <i className={`wi ${weatherIcon}`}></i>
-                <p>{mathRound(props.day.main.temp)}&deg;</p>
+                <p>{mathRound(day.main.temp)}&deg;</p>
             </div>
-        </div>
     )
 };
 
