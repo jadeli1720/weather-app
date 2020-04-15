@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { mathRound, fetchWeekIcons, sunTime, getDay } from '../utils/index'
-// import { mathRound, sunTime, degToCompass, fetchWeekIcons, getDay } from '../utils/index'
+import { mathRound, fetchWeekIcons, sunTime, getDay } from '../utils/index';
 
 const Weekday = ({ day }) => {
 
@@ -12,17 +11,19 @@ const Weekday = ({ day }) => {
             return setWeatherIcon(weather)
         }
     }, []);
+
     console.log("weekday component",sunTime(day.dt))
 
-    // console.log("weekday",getDay(day.dt))
-    // console.log("full day is", getDay(day.dt))
-    // console.log("date?", day.dt_txt)
+//May need to change css styling
     return (
             <div className="forcast mb-2">
                 {/* {console.log("Day component",day.main.temp)} */}
-                <p>{getDay(day.dt)}</p>
-                <i className={`wi ${weatherIcon}`}></i>
-                <p>{mathRound(day.main.temp)}&deg;</p>
+                <p className="text-center">{getDay(day.dt)}</p>
+                <div className="icons text-center ">
+                    <i className={`wi ${weatherIcon}`}></i>
+                </div>
+                
+                <p className="text-center">{mathRound(day.main.temp)}&deg;</p>
             </div>
     )
 };

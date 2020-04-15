@@ -9,7 +9,7 @@ import "weather-icons/css/weather-icons.css";
 
 
 const DailyForcast = ({day}) => {
-    //not working properly. Getting night time icons during the daytime
+    //May not be working properly. Check if we are getting night time icons during the daytime
     const [weatherIcon, setWeatherIcon] = useState('wi-day-sunny')
 
     // console.log("Testing weather icons:",fetchIcons(day.weather[0].id))
@@ -42,7 +42,6 @@ const DailyForcast = ({day}) => {
                         <div className="weatherIcon mr-1">
                             <i className={`wi ${weatherIcon}`}></i>
                         </div>
-                        {/* <img  src={`http://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png`} alt='weather icon' /> */}
                         <h1 className="pt-2 ml-2">{mathRound(day.main.temp)}&deg;</h1>
                     </div>
                     <div className="temp-mid " >

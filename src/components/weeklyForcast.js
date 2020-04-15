@@ -36,7 +36,7 @@ const WeeklyForcast = ({ week }) => {
 
 
     //TODO's:
-    //implement one of the react sliders
+    //implement one of the react sliders. May not need if we are only doing 5 day. Need to figure out if we will get more or request for 7 day look out
     // overall will need to decide on layout when weather icon is on bigger screen sizes like tablets. Maybe limit it to those sizes and make it responsive down to phone screens. This may effect the sliders.
 
     return (

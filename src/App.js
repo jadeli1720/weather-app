@@ -23,6 +23,7 @@ function App() {
     setLoading(true)
     // TODO: change this to geolocation
     // api urls
+    //cnt number of days returned (from 1 to 16)
     let fetchDay = `https://cors-anywhere.herokuapp.com/https://api.openweathermap.org/data/2.5/weather?q=denver,us&APPID=${Key}&units=imperial`
     let fetchWeek = `https://cors-anywhere.herokuapp.com/https://api.openweathermap.org/data/2.5/forecast?q=denver,us&appid=${Key}&units=imperial`
     
@@ -89,6 +90,7 @@ function App() {
   }
   
   //Pauses app here had displays loading until data is fetched
+  //Need to change so the loader will be in the center. Create our own loader maybe that is weather like and animated
   if(loading) {
     return(
       <div>Loading...</div>
@@ -102,8 +104,6 @@ function App() {
         <SearchForm search={searchCity}/>
         <DailyForcast day = {dailyData}/>
         <WeeklyForcast  week ={weeklyData}/>
-        {/* {console.log("Daily Data?", dailyData)} */}
-        {/* {console.log("Weekly Data?", showData(weeklyData.list))} */}
       </Container>
 
     </div>
