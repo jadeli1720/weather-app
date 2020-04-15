@@ -4,7 +4,6 @@ import { mathRound, fetchWeekIcons, sunTime, getDay } from '../utils/index'
 
 const Weekday = ({ day }) => {
 
-    //not working properly. Getting night time icons during the daytime
     const [weatherIcon, setWeatherIcon] = useState('wi-day-sunny')
 
     useEffect(() => {
@@ -14,11 +13,6 @@ const Weekday = ({ day }) => {
         }
     }, []);
     console.log("weekday component",sunTime(day.dt))
-
-    // <p>{getDay(day.dt)}</p>
-    
-    // <p>{mathRound(day.main.temp)}&deg;</p>
-    // showData(day.dt)
 
     // console.log("weekday",getDay(day.dt))
     // console.log("full day is", getDay(day.dt))
