@@ -9,6 +9,7 @@ import "weather-icons/css/weather-icons.css";
 
 
 const DailyForcast = ({day}) => {
+    //not working properly. Getting night time icons during the daytime
     const [weatherIcon, setWeatherIcon] = useState('wi-day-sunny')
 
     // console.log("Testing weather icons:",fetchIcons(day.weather[0].id))

@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { mathRound, sunTime, degToCompass, fetchIcons } from '../utils/index';
+import { sunTime } from '../utils/index';
 // import DateDisplay from './date'
 import Weekday from './weekday';
 
 const WeeklyForcast = ({week}) => {
-    const [weatherIcon, setWeatherIcon] = useState('wi-day-sunny');
+    //not working properly. Getting night time icons during the daytime
+    // const [weatherIcon, setWeatherIcon] = useState('wi-day-sunny');
 
-    // const weekday = weeklyData.list;
-    // console.log('Weekly Component', week.list)
+    // const weekday = week.list;
+    // console.log('Weekly Component', weeklyData)
 
     
     const showData = (dataList) => {
@@ -39,34 +40,35 @@ const WeeklyForcast = ({week}) => {
     //possibly make another child component of this one to format single data. Move helper functions there.
     //implement one of the react sliders
      // overall will need to decide on layout when weather icon is on bigger screen sizes like tablets. Maybe limit it to those sizes and make it responsive down to phone screens. This may effect the sliders.
+   
+
     return (
-        <div className="card-container mt-3">
-            {week.list && week.list.forEach(day => { 
-            //  console.log("data",day)
+        <>
+            { week.list && week.list.forEach(day => { 
                 let time = sunTime(day.dt)
-                //when I uncomment the below console.log, the data reders to console. Now I just need the componenet to render in the if statement
-                if(time === "3:00 pm" ){
-                    return (
-                    // console.log("data",day)
-                    <Weekday
-                        key={day.dt}
-                        day = {day}
-                    />
-                    )
-                }
-                // return time === "3:00 pm" 
-                // ? 
-                // <Weekday
-                //     key={day.dt}
-                //     daily = {day}
-                // />
+                console.log("Time",time)
+
+                // time === "3:00 pm"
+                // ?(
+                //         // console.log("day data",day)
+                //         <div className="card-container mt-3">
+                        
+                //             <Weekday
+                //                     key={day.dt}
+                //                     day = {day}
+                //                 />
+                //         </div>
+                        
+                // )
                 // :
-                // day
-                }
+                // null  
+            }
             )} 
-            
-        </div>
+        </>
     );
 };
+
+
+
 
 export default WeeklyForcast;

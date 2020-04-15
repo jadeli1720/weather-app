@@ -56,7 +56,7 @@ export const getDay = dateTime => {
     //passing in the day_arr to get day of the week
     let day = day_arr[date.getDay()]
 
-    let time = sunTime(date)
+    // let time = sunTime(date)
 
     
     return day 

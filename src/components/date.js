@@ -19,9 +19,9 @@ const DateDisplay = () => {
         }
     }
 
-    useEffect (() => {
-        updateDate()
-    }, []);
+    // useEffect (() => {
+    //     updateDate()
+    // }, []);
     
         
     return(
