@@ -16,7 +16,15 @@ body {
     font-family: 'Roboto Condensed','Roboto', 'Helvetica Nueue', sans-serif;
     font-size: 100%;
 }
+
+.bold{
+    font-weight: 600;
+}
+
 //glass like texture for data
+.card{
+    
+}
 .dateDisplay {
     margin: 0px;
 
@@ -41,7 +49,7 @@ body {
         h1{
             margin: 0px;
             font-size: 4.4rem;
-            font-weight: 300;
+            font-weight: 500;
         }
 
         .weatherIcon{
@@ -115,21 +123,35 @@ body {
     flex-direction: row;
     justify-content: space-evenly;
 
-    // below may change due to putting into a slider, which we may not need.
-    //if not using slider, figure out how to create border only some of the time
+    
     .forcast{
-        border: 1px solid rgb(199, 199, 199);
         display: flex;
         flex-direction: column;
         justify-content: center;
         max-width: 77px;
         width: 100%;
+
+        .dayOfWeek{
+            margin: 5px 0px 0px;
+        }
+
+        .icon-container{
+            margin: 10px 0 6px;
+                
+            i{
+                font-size: 28px;
+            }
+        }
+
+        
+
+        .temperature{
+            margin: 0px 0px 5px;
+        }
         
     }
 
-    p{
-        margin:0;
-    }
+    
     
 }
 

@@ -1,38 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { sunTime } from '../utils/index';
-// import DateDisplay from './date'
+import { Card } from 'react-bootstrap';
 import Weekday from './weekday';
 
 const WeeklyForcast = ({ week }) => {
-    //not working properly. Getting night time icons during the daytime
-    // const [weatherIcon, setWeatherIcon] = useState('wi-day-sunny');
 
     // const weekday = week.list;
     // console.log('Weekly Component', weeklyData)
 
 
-    const showData = (dataList) => {
-        console.log(dataList)
-        for (let data of dataList) {
-            let time = sunTime(data)
-            console.log("Time", time)
-            // if(time === "3:00 pm"){
-            //     // console.log("Time", time)
-            //     console.log("3 pm data", data)
-            //     return data
-            // }
-        }
-
-    }
-
-    // console.log("show",showData(week.list))
-
-    useEffect(() => {
-        // if (data) {
-        //     let weather = fetchIcons(data.weather[0].id)
-        //     return setWeatherIcon(weather)
-        // }
-    }, []);
+    // console.log("show",week.list)
 
 
     //TODO's:
@@ -41,20 +18,20 @@ const WeeklyForcast = ({ week }) => {
 
     return (
         <>
-            <div className="weeklyForcast">
+            <Card className="weeklyForcast card">
             {week.list
-                ? week.list.map(day => {
+                ? week.list.map((day) => {
                     let time = sunTime(day.dt);
+                    // console.log(time)
                     if (time === "3:00 pm") return <Weekday key={day.dt} day={day} />;
+                    // console.log("Mapping",day)
                 })
                 : null}
-            </div>
+            </Card>
             
         </>
     );
 };
-
-
 
 
 export default WeeklyForcast;

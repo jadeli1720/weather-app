@@ -36,7 +36,7 @@ function App() {
         const resDay = res[0]
         // console.log("Daily forcast", resDay.data)
         const resWeek = res[1]
-        console.log("Weekly forcast", resWeek.data.list)
+        // console.log("Weekly forcast", resWeek.data.list)
         setDailyData(resDay.data)
         setWeeklyData(resWeek.data)
         setLoading(false);
@@ -66,7 +66,7 @@ function App() {
         const resDay = res[0]
         // console.log("Daily forcast", resDay.data)
         const resWeek = res[1]
-        console.log("Weekly forcast", resWeek.data)
+        // console.log("Weekly forcast", resWeek.data)
         setDailyData(resDay.data)
         setWeeklyData(resWeek.data)
         setLoading(false);
@@ -82,7 +82,7 @@ function App() {
 
   useEffect(() => {
     fetchWeather();
-  }, []);
+  }, []); //how do we get rid of this warning?
 
   //pauses the application here if there is an error
   if(error) {
@@ -100,7 +100,7 @@ function App() {
   return (
     <div className="App">
       <Container>
-        <h1>Weatherify</h1>
+        <h1 className="my-2 " >Weatherify</h1>
         <SearchForm search={searchCity}/>
         <DailyForcast day = {dailyData}/>
         <WeeklyForcast  week ={weeklyData}/>

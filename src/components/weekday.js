@@ -1,29 +1,29 @@
 import React, { useState, useEffect } from 'react';
-import { mathRound, fetchWeekIcons, sunTime, getDay } from '../utils/index';
+import { mathRound, fetchWeekIcons, getDay } from '../utils/index';
 
 const Weekday = ({ day }) => {
 
     const [weatherIcon, setWeatherIcon] = useState('wi-day-sunny')
-
+    
     useEffect(() => {
         if (day) {
             let weather = fetchWeekIcons(day.weather[0].id)
             return setWeatherIcon(weather)
         }
-    }, []);
+    }, []); //how do we get rid of this warning?
 
-    console.log("weekday component",sunTime(day.dt))
+    // console.log("weekday component",mathRound(day.main.temp))
 
 //May need to change css styling
     return (
-            <div className="forcast mb-2">
+            <div className="forcast">
                 {/* {console.log("Day component",day.main.temp)} */}
-                <p className="text-center">{getDay(day.dt)}</p>
-                <div className="icons text-center ">
+                <p className="text-center dayOfWeek bold">{getDay(day.dt)}</p>
+                <div className="text-center icon-container">
                     <i className={`wi ${weatherIcon}`}></i>
                 </div>
                 
-                <p className="text-center">{mathRound(day.main.temp)}&deg;</p>
+                <p className="text-center temperature">{mathRound(day.main.temp)}&deg;</p>
             </div>
     )
 };
