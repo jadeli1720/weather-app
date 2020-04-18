@@ -1,13 +1,13 @@
-import React, {useState} from "react";
-import {Form, Button, Col }from 'react-bootstrap';
+import React, { useState } from "react";
+import { Form, Button, Col, InputGroup } from 'react-bootstrap';
 
 const SearchForm = (props) => {
-    const[searchLocation, setSearchLocation] = useState("")
+    const [searchLocation, setSearchLocation] = useState("")
     // const[searchLocation, setSearchLocation] = useState({
     //     city: "",
     //     country: ""
     // })
-    
+
     const handleSearch = (e) => {
         // const updateLocation = {...searchLocation,[e.target.name]: e.target.value }
         // // console.log(
@@ -34,35 +34,26 @@ const SearchForm = (props) => {
         resetForm();
     }
 
-    return(
-        <Form onSubmit={submitSearch} >
-            <Form.Row >
-                <Form.Group as={Col}>
-                    <Form.Control 
-                        type="text" 
-                        name="city" 
-                        placeholder="City"
-                        value={searchLocation}
-                        // value={searchLocation.city}
-                        onChange={handleSearch}
-                        ></Form.Control>
-                </Form.Group>
-                {/* <Form.Group as={Col}>
-                    <Form.Control 
-                        type="text" 
-                        name="country" 
-                        placeholder="Country"
-                        value={searchLocation.country}
-                        onChange={handleSearch}
-                        ></Form.Control>
-                </Form.Group> */}
-                <div className="col-3">
-                    <Button type="submit" value="Search">
+    return (
+        <Form onSubmit={submitSearch} className="mb-3">
+            <InputGroup >
+                <Form.Control
+                    type="text"
+                    name="city"
+                    placeholder="City"
+                    aria-label="City"
+                    aria-describedby="City Input"
+                    className="p-1"
+                    value={searchLocation}
+                    // value={searchLocation.city}
+                    onChange={handleSearch}
+                />
+                <InputGroup.Append>
+                    <Button type="submit" className="searchButton" value="Search">
                         Weatherify
-                    </Button>
-                </div>
-            </Form.Row>
-
+                </Button>
+                </InputGroup.Append>
+            </InputGroup>
         </Form>
     );
 };
