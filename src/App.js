@@ -6,10 +6,9 @@ import SearchForm from './components/searchForm';
 import DailyForcast from './components/dailyForcast';
 import {Container}from 'react-bootstrap';
 import WeeklyForcast from './components/weeklyForcast';
-import {sunTime} from './utils/index'
 
 
-//before moving to production, change.
+//Before moving to production, change.
 const Key = process.env.REACT_APP_KEY
 // const Key = process.env.REACT_APP_WEATHERBIT_KEY
 

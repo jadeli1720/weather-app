@@ -9,8 +9,7 @@ import "weather-icons/css/weather-icons.css";
 
 
 const DailyForcast = ({day}) => {
-    //May not be working properly. Check if we are getting night time icons during the daytime
-    //These icons need to range for day light hours of sunrise to sunset
+    
     const [weatherIcon, setWeatherIcon] = useState('wi-day-sunny')
 
     // console.log("Testing weather icons:",fetchDailyIcons(day.weather[0].id))
@@ -57,40 +56,45 @@ const DailyForcast = ({day}) => {
                 {/* bottom row */}
                 <div className="metrics-row">
                     <div className=" row metrics mt-3" >
-                        <div className="col-2 column-1">
+                        <div className="col-4 column-1">
                             <div className="icons  ">
                                 <i className="wi wi-small-craft-advisory"></i>
                             </div>
                         </div>
+                        <div className="leftMetricsDivider"></div>
                         <div className="col-4 column-2">
                             <p className="m-0 bold" >{degToCompass(day.wind.deg)}</p>
                             <p className="m-0" >{mathRound(day.wind.speed)}</p>
                         </div>
-                        <div className="col-2 column-1">
+                        
+                        <div className="col-4 column-1">
                             <div className="icons">
                                 <i className="wi wi-raindrop"></i>
                             </div>
                         </div>
+                        <div className="rightMetricsDivider"></div>
                         <div className="col-4 column-2">
                             <p className="m-0 bold" >Humidity</p>
                             <p className="m-0" >{mathRound(day.main.humidity)}%</p>
                         </div>
                     </div>
                     <div className=" row metrics mt-3 " >
-                        <div className="col-2 column-1">
+                        <div className="col-4 column-1">
                             <div className="icons ">
-                                <i className="wi wi-sunrise"></i>
+                                <i className="wi wi-sunrise "></i>
                             </div>
                         </div>
+                        <div className="leftMetricsDivider"></div>
                         <div className="col-4 column-2">
                             <p className="m-0 bold" >Sunrise</p>
                             <p className="m-0" >{sunTime(day.sys.sunrise)}</p>
                         </div>
-                        <div className="col-2 column-1">
+                        <div className="col-4 column-1">
                             <div className="icons text-center ">
-                                <i className="wi wi-sunset"></i>
+                                <i className="wi wi-sunset "></i>
                             </div>
                         </div>
+                        <div className="rightMetricsDivider"></div>
                         <div className="col-4 column-2">
                             <p className="m-0 bold" >Sunset</p>
                             <p className="m-0" >{sunTime(day.sys.sunset)}</p>
