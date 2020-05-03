@@ -185,7 +185,7 @@ export const fetchDailyIcons = (rangeId, sunRise, sunSet) => {
 
         //Rain --> 500's
         //light - moderate
-        case rangeId === 500 || rangeId === 501:
+        case rangeId === 500 || rangeId === 501 || rangeId === 520:
             if (range) {
                 return "wi-day-showers";
             } else {
@@ -434,19 +434,5 @@ export const fetchWeekIcons = rangeId => {
 };
 
 
-
-// const showData = (dataList) => {
-//     console.log(dataList)
-//     for (let data of dataList) {
-//         let time = sunTime(data)
-//         // console.log("Time", time)
-//         // if(time === "3:00 pm"){
-//         //     // console.log("Time", time)
-//         //     console.log("3 pm data", data)
-//         //     return data
-//         // }
-//     }
-
-// }
 
 

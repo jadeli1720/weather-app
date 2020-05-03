@@ -33,7 +33,7 @@ function App() {
     axios.all([requestDay, requestWeek])
       .then(axios.spread((...res) => {
         const resDay = res[0]
-        // console.log("Daily forcast", resDay.data)
+        console.log("Daily forcast", resDay.data)
         const resWeek = res[1]
         // console.log("Weekly forcast", resWeek.data.list)
         setDailyData(resDay.data)
@@ -99,7 +99,7 @@ function App() {
   return (
     <div className="App">
       <Container>
-        <h1 className="my-2 " >Weatherify</h1>
+        <h1 className="my-3">Weatherify</h1>
         <SearchForm search={searchCity}/>
         <DailyForcast day = {dailyData}/>
         <WeeklyForcast  week ={weeklyData}/>
