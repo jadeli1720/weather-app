@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { mathRound, degToCompass, fetchDailyIcons, timezones, tzArray } from '../utils/index'
+import { mathRound, degToCompass, fetchDailyIcons, timezones } from '../utils/index'
 import { Card } from 'react-bootstrap';
 import Moment from "react-moment";
 import "moment-timezone";
@@ -27,6 +27,9 @@ const DailyForcast = ({ day }) => {
     }, []); //how do we get rid of this warning?
 
     // console.log("Setting Weather", weatherIcon)
+    console.log("Timezones", timezones(day.timezone))
+
+    // let timeZone = timezones(day.timezone, tzArray)
 
     return (
         <div className="card-container">
@@ -89,11 +92,9 @@ const DailyForcast = ({ day }) => {
                         <div className="leftMetricsDivider"></div>
                         <div className="col-4 column-2">
                             <p className="m-0 bold" >Sunrise</p>
-                            <p className="m-0" >
-                                <Moment unix tz={timezones(day.timezone, tzArray)} format="h:mm a">
-                                    {day.sys.sunrise}
-                                </Moment>
-                            </p>
+                            <Moment className="m-0" unix tz={`${timezones(day.timezone, "datetime")}`} format="h:mm a">
+                                {day.sys.sunrise}
+                            </Moment>
                         </div>
                         <div className="col-4 column-1">
                             <div className="icons text-center ">
@@ -104,8 +105,8 @@ const DailyForcast = ({ day }) => {
                         <div className="col-4 column-2">
                             <p className="m-0 bold" >Sunset</p>
                             <p className="m-0" >
-                                <Moment unix tz={timezones(day.timezone, tzArray)} format="h:mm a">{day.sys.sunset}
-                                </Moment>
+                                {/* <Moment unix tz={timezones(day.timezone)} format="h:mm a">{day.sys.sunset}
+                                </Moment> */}
                             </p>
                         </div>
                     </div>
