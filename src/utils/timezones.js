@@ -1,42 +1,10 @@
+import { tzArray } from "./data";
+
 export const timezones = (timezone) => {
     //converting the timezone offset that is in UTC seconds to ours
     let offset = timezone / 3600;
     //Array
-    let tz = [
-        "Pacific/Niue",
-        "Pacific/Honolulu",
-        "Pacific/Gambier",
-        "America/Anchorage",
-        "America/Los_Angeles",
-        "America/Denver",
-        "America/Chicago",
-        "America/New_York",
-        "America/Sao_Paulo",
-        "America/Noronha",
-        "Atlantic/Cape_Verde",
-        "Europe/Lisbon",
-        "Europe/London",
-        "Europe/Pairs",
-        "Europe/Moscow",
-        "Europe/Samara",
-        "Asia/Tehran",
-        "Asia/Yekaterinburg",
-        "Asia/Colombo",
-        "Asia/Kathmandu",
-        "Asia/Omsk",
-        "Asia/Bangkok",
-        "Australia/Perth",
-        "Australia/Eucla",
-        "Asia/Tokyo",
-        "Australia/Adelaide",
-        "Australia/Sydney",
-        "Australia/Lord_Howe",
-        "Pacific/Guadalcanal",
-        "Pacific/Auckland",
-        "Pacific/Apia",
-        "Pacific/Kiritimati",
-        "Not Found"
-        ];
+    let tz = tzArray
     switch (offset) {
         //Pacific/Niue
         case -11:

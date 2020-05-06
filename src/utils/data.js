@@ -12,7 +12,7 @@ export const tzArray = [
     "Atlantic/Cape_Verde",
     "Europe/Lisbon",
     "Europe/London",
-    "Europe/Pairs",
+    "Europe/Paris",
     "Europe/Moscow",
     "Europe/Samara",
     "Asia/Tehran",

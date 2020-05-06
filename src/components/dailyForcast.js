@@ -29,7 +29,9 @@ const DailyForcast = ({ day }) => {
     // console.log("Setting Weather", weatherIcon)
     console.log("Timezones", timezones(day.timezone))
 
-    // let timeZone = timezones(day.timezone, tzArray)
+    // let timeZone = timezones(day.timezone)
+
+    // console.log(typeof timeZone)
 
     return (
         <div className="card-container">
@@ -92,7 +94,7 @@ const DailyForcast = ({ day }) => {
                         <div className="leftMetricsDivider"></div>
                         <div className="col-4 column-2">
                             <p className="m-0 bold" >Sunrise</p>
-                            <Moment className="m-0" unix tz={`${timezones(day.timezone, "datetime")}`} format="h:mm a">
+                            <Moment className="m-0" unix tz={timezones(day.timezone)} format="h:mm a">
                                 {day.sys.sunrise}
                             </Moment>
                         </div>
@@ -105,8 +107,8 @@ const DailyForcast = ({ day }) => {
                         <div className="col-4 column-2">
                             <p className="m-0 bold" >Sunset</p>
                             <p className="m-0" >
-                                {/* <Moment unix tz={timezones(day.timezone)} format="h:mm a">{day.sys.sunset}
-                                </Moment> */}
+                                <Moment unix tz={timezones(day.timezone)} format="h:mm a">{day.sys.sunset}
+                                </Moment>
                             </p>
                         </div>
                     </div>
