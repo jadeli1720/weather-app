@@ -1,53 +1,46 @@
+import { timezones } from "./timezones";
+// import Moment from "react-moment";
+import "moment-timezone";
+
+let moment = require("moment");
+
 //Function to check if current time is between the locations sunrise and sunset data
-export const timeRange = (sunRise, sunSet) => {
-    //current date
-    let currentDate = new Date()
-    // console.log("Fetch Time", currentDate)
+export const timeRange = (sunrise, sunset, timezone) => {
+    //STEP 1: get the timezone country/city
+    let tZone = timezones(timezone);
+    // console.log("Timezone",tZone);
 
-    //Turning the SUNRISE unix time into a string "hours:minutes:seconds"
-    let riseTime = new Date(sunRise * 1000);
-    let startHours = riseTime.getHours();
-    let startMinutes = riseTime.getMinutes();
-    let startSeconds = riseTime.getSeconds();
-    //formatting
-    let risingSun = startHours + ":" + startMinutes + ":" + startSeconds;
-    //splitting string into array of numerical values 
-    let rising = risingSun.split(':');
+    //STEP 2: get and format current, sunrise, and sunset times 
+    let currentTime = moment().tz(tZone);
+    // console.log("Current Time", currentTime)
 
-    let startTime = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate(), parseInt(rising[0]), parseInt(rising[1]), parseInt(rising[2]));
-    // console.log("Start Time", startTime)
+    let sunRise = moment(sunrise * 1000).tz(tZone);
+    // console.log("Sunrise", sunRise);
+    let sunSet = moment(sunset * 1000).tz(tZone);
+    // console.log("Sunset", sunSet);
 
-    //Turning the SUNSET unix time into a string "hours:minutes:seconds"
-    let setTime = new Date(sunSet * 1000);
-    let endHours = setTime.getHours();
-    let endMinutes = setTime.getMinutes();
-    let endSeconds = setTime.getSeconds();
-    //formatting
-    let settingSun = endHours + ":" + endMinutes + ":" + endSeconds ;
-    //splitting string into array of numerical values 
-    let setting = settingSun.split(':');
-
-    
-    let endTime = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate(), parseInt(setting[0]), parseInt(setting[1]), parseInt(setting[2]))
-    // console.log("End Time", endTime)
-    
-    //comparing to see if currentDate time is between locations sunrise and sunset times
-    let valid = currentDate >= startTime && currentDate <= endTime
-
-    return valid
+    //STEP 3: Compare
+    if (moment(currentTime).isBetween(sunRise, sunSet, null, [])) {
+        console.log(true)
+        return true
+    }
+    else {
+        console.log(false)
+        return false
+    }
 }
 
 //Fetching icons passing in icon ID, sunrise, and sunset from API
-export const fetchDailyIcons = (rangeId, sunRise, sunSet) => {
+export const fetchDailyIcons = (rangeId, sunRise, sunSet, timeZone) => {
     //Using timeRange function to set morning and night time icons based off of locations sunrise and sunset data. 
-    let range = timeRange(sunRise, sunSet)
-    
+    let range = timeRange(sunRise, sunSet, timeZone)
+
     //If the current time is when the sun is in the sky, show the day icons. Else return the night icons
     switch (true) {
         //Thunderstorm --> 200's
         //Thunderstorm w/rain
         case rangeId >= 200 && rangeId < 210:
-            if (range) {
+            if (range ) {
                 return "wi-day-thunderstorm";
             } else {
                 return "wi-night-alt-thunderstorm";
