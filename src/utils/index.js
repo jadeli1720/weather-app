@@ -1,7 +1,11 @@
+export { timezones } from "./timezones";
+export { tzArray } from './data';
+
 //should probably divide these up and import them to this file
 export const mathRound = num => {
     return Math.round(num);
 };
+
 
 //converting unix timestamp into hh/mm format from API
 export const sunTime = unix_timestamp => {

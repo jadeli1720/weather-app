@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { mathRound, sunTime, degToCompass, fetchDailyIcons } from '../utils/index'
+import { mathRound, sunTime, degToCompass, fetchDailyIcons, timezones } from '../utils/index'
 import { Card } from 'react-bootstrap';
+import Moment from "react-moment";
+import "moment-timezone";
 import DateDisplay from './date'
 
 // Icons from git project --> https://github.com/erikflowers/weather-icons
@@ -8,8 +10,8 @@ import "weather-icons/css/weather-icons.css";
 
 
 
-const DailyForcast = ({day}) => {
-    
+const DailyForcast = ({ day }) => {
+
     const [weatherIcon, setWeatherIcon] = useState('wi-day-sunny')
 
     // console.log("Testing weather icons:",fetchDailyIcons(day.weather[0].id))
@@ -66,7 +68,7 @@ const DailyForcast = ({day}) => {
                             <p className="m-0 bold" >{degToCompass(day.wind.deg)}</p>
                             <p className="m-0" >{mathRound(day.wind.speed)}</p>
                         </div>
-                        
+
                         <div className="col-4 column-1">
                             <div className="icons">
                                 <i className="wi wi-raindrop"></i>
@@ -87,7 +89,11 @@ const DailyForcast = ({day}) => {
                         <div className="leftMetricsDivider"></div>
                         <div className="col-4 column-2">
                             <p className="m-0 bold" >Sunrise</p>
-                            <p className="m-0" >{sunTime(day.sys.sunrise)}</p>
+                            <p className="m-0" >
+                                <Moment unix tz={timezones(day.timezone, tzArray)} format="h:mm a">
+                                    {day.sys.sunrise}
+                                </Moment>
+                            </p>
                         </div>
                         <div className="col-4 column-1">
                             <div className="icons text-center ">
@@ -97,7 +103,10 @@ const DailyForcast = ({day}) => {
                         <div className="rightMetricsDivider"></div>
                         <div className="col-4 column-2">
                             <p className="m-0 bold" >Sunset</p>
-                            <p className="m-0" >{sunTime(day.sys.sunset)}</p>
+                            <p className="m-0" >
+                                <Moment unix tz={timezones(day.timezone, tzArray)} format="h:mm a">{day.sys.sunset}
+                                </Moment>
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -107,3 +116,16 @@ const DailyForcast = ({day}) => {
 };
 
 export default DailyForcast;
+
+
+/*
+<p>Sunrise: </p>
+<Moment unix tz={timezones(city.timezone, tzArray)} format="h:mm a">
+    {city.sys.sunrise}
+</Moment>
+<p>Sunset: </p>
+<Moment unix tz={timezones(city.timezone, tzArray)} format="h:mm a">
+        {city.sys.sunset}
+</Moment>
+
+*/

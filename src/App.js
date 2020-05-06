@@ -33,7 +33,7 @@ function App() {
     axios.all([requestDay, requestWeek])
       .then(axios.spread((...res) => {
         const resDay = res[0]
-        console.log("Daily forcast", resDay.data)
+        // console.log("Daily forcast", resDay.data)
         const resWeek = res[1]
         // console.log("Weekly forcast", resWeek.data.list)
         setDailyData(resDay.data)
