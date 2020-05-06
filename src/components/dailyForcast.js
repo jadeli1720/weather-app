@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { mathRound, sunTime, degToCompass, fetchDailyIcons, timezones } from '../utils/index'
+import { mathRound, degToCompass, fetchDailyIcons, timezones, tzArray } from '../utils/index'
 import { Card } from 'react-bootstrap';
 import Moment from "react-moment";
 import "moment-timezone";
