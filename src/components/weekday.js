@@ -10,7 +10,7 @@ const Weekday = ({ day }) => {
             let weather = fetchWeekIcons(day.weather[0].id)
             return setWeatherIcon(weather)
         }
-    }, []); //how do we get rid of this warning?
+    }, [day]); 
 
     // console.log("weekday component",mathRound(day.main.temp))
 

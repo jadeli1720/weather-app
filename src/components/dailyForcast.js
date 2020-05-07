@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { mathRound, sunTime, degToCompass, fetchDailyIcons } from '../utils/index'
+import { mathRound, degToCompass, fetchDailyIcons, timezones } from '../utils/index'
 import { Card } from 'react-bootstrap';
+import Moment from "react-moment";
+import "moment-timezone";
 import DateDisplay from './date'
 
 // Icons from git project --> https://github.com/erikflowers/weather-icons
@@ -8,24 +10,20 @@ import "weather-icons/css/weather-icons.css";
 
 
 
-const DailyForcast = ({day}) => {
-    
+const DailyForcast = ({ day }) => {
+
     const [weatherIcon, setWeatherIcon] = useState('wi-day-sunny')
 
-    // console.log("Testing weather icons:",fetchDailyIcons(day.weather[0].id))
-    console.log("Day data", day)
-    // console.log("Sunrise and Sunset", sunTime(day.sys.sunset))
-    // console.log("sunTime of Day",degToCompass(day.wind.deg))
+    // console.log("Day data", day)
 
     useEffect(() => {
         if (day) {
-            let weather = fetchDailyIcons(day.weather[0].id, day.sys.sunrise, day.sys.sunset)
+            let weather = fetchDailyIcons(day.weather[0].id, day.sys.sunrise, day.sys.sunset, day.timezone)
             return setWeatherIcon(weather)
         }
-    }, []); //how do we get rid of this warning?
+    }, [day]);
 
-    // console.log("Setting Weather", weatherIcon)
-
+    
     return (
         <div className="card-container">
 
@@ -38,7 +36,6 @@ const DailyForcast = ({day}) => {
                 {/* middle row */}
                 <div className="temp p-3" >
                     <div className="temp-top" >
-                        {/* Need to use different Icons. These aren't the best*/}
                         <div className="weatherIcon mr-1">
                             <i className={`wi ${weatherIcon}`}></i>
                         </div>
@@ -66,7 +63,7 @@ const DailyForcast = ({day}) => {
                             <p className="m-0 bold" >{degToCompass(day.wind.deg)}</p>
                             <p className="m-0" >{mathRound(day.wind.speed)}</p>
                         </div>
-                        
+
                         <div className="col-4 column-1">
                             <div className="icons">
                                 <i className="wi wi-raindrop"></i>
@@ -87,7 +84,9 @@ const DailyForcast = ({day}) => {
                         <div className="leftMetricsDivider"></div>
                         <div className="col-4 column-2">
                             <p className="m-0 bold" >Sunrise</p>
-                            <p className="m-0" >{sunTime(day.sys.sunrise)}</p>
+                            <Moment className="m-0" unix tz={timezones(day.timezone)} format="h:mm a">
+                                {day.sys.sunrise}
+                            </Moment>
                         </div>
                         <div className="col-4 column-1">
                             <div className="icons text-center ">
@@ -97,7 +96,10 @@ const DailyForcast = ({day}) => {
                         <div className="rightMetricsDivider"></div>
                         <div className="col-4 column-2">
                             <p className="m-0 bold" >Sunset</p>
-                            <p className="m-0" >{sunTime(day.sys.sunset)}</p>
+                            <p className="m-0" >
+                                <Moment unix tz={timezones(day.timezone)} format="h:mm a">{day.sys.sunset}
+                                </Moment>
+                            </p>
                         </div>
                     </div>
                 </div>

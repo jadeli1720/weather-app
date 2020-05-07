@@ -4,6 +4,7 @@
 // MediaQueries
 $screen-sm: 678px;
 
+$screen-phone: 456px;
 
 *{
     box-sizing: border-box;
@@ -13,6 +14,11 @@ $screen-sm: 678px;
 //media queries. So far I have been designing for mobile first. Many styles may change
 
 body {
+    background-color: #43a7df;
+    background: url(./assests/clearDay.png) no-repeat fixed;
+    background-size: cover;
+    // background-image: linear-gradient(to bottom, #43a7df, #50acdf, #5db1e0, #68b5e0, #73bae1) ;
+    // background-attachment: fixed;
     margin: 0 auto;
     padding:0;
     max-width: 1000px;
@@ -21,6 +27,13 @@ body {
     font-family: 'Roboto Condensed','Roboto', 'Helvetica Nueue', sans-serif;
     font-size: 100%;
 }
+
+.dayGrad{
+    background-color: #43a7df;
+    background-image: linear-gradient(to bottom, #43a7df, #50acdf, #5db1e0, #68b5e0, #73bae1);
+}
+
+
 
 .container{
     max-width: 800px;
@@ -35,7 +48,7 @@ body {
 
 //glass like texture for data
 .card{
-    
+    background-color: rgba(245, 245, 245, 0.87);
 }
 .dateDisplay {
     margin: 0px;
@@ -92,6 +105,7 @@ body {
 }
 
 .metrics-row{
+    // border: 1px red solid;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -99,12 +113,10 @@ body {
     max-width: 680px;
     width: 100%;
     height: 100%;
-    // border: 1px red solid;
 }
 .metrics{
     // border:1px solid teal;
     display: flex;
-    flex-direction: row;
     justify-content: space-between;
     align-items: center;
     margin: 0 auto;
@@ -116,13 +128,13 @@ body {
     .column-1{
         // border:1px solid purple;
         display: flex;
-        flex-direction: column;
         justify-content: center;
         align-items: center;
         margin: 0 auto;
         max-width: 160px;
         width: 100%;
         height: 20%;
+
         .icons{
             display: flex;
             justify-content: center;
@@ -134,33 +146,6 @@ body {
                 
                 font-size: 25px;
             }
-        }
-    }
-
-    .leftMetricsDivider{
-        &::before{
-            content:"";
-            top: 1%;
-            left: 25%; 
-            display: block;
-            position: absolute;
-            width: 1px;
-            height: 100%;
-            background: lightgrey;
-        }
-    }
-
-
-    .rightMetricsDivider{
-        &::before{
-            content:"";
-            top: 1%;
-            left: 75%; 
-            display: block;
-            position: absolute;
-            width: 1px;
-            height: 100%;
-            background: lightgrey;
         }
     }
 
@@ -178,10 +163,46 @@ body {
         // padding: 0;
     }
 
+    .leftMetricsDivider{
+        &::before{
+            content:"";
+            top: 1%;
+            left: 25%; 
+            display: block;
+            position: absolute;
+            width: 1px;
+            height: 100%;
+            background: lightgrey;
+        }
+    }
+
+    .rightMetricsDivider{
+        &::before{
+            content:"";
+            top: 1%;
+            left: 75%; 
+            display: block;
+            position: absolute;
+            width: 1px;
+            height: 100%;
+            background: lightgrey;
+        }
+    }
+
+    @media screen and (max-width: $screen-sm){
+        .column-1, .column-2{
+            max-width: 100px;
+        }
+    }
+
+    @media screen and (max-width: $screen-phone){
+        .column-1, .column-2{
+            max-width: 75px;
+        }
+    }
+
 
 }
-
-
 
 .weeklyForcast {
     display: flex;

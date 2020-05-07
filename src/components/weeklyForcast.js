@@ -1,5 +1,5 @@
 import React from 'react';
-import { sunTime } from '../utils/index';
+import { fetchTime } from '../utils/index';
 import { Card } from 'react-bootstrap';
 import Weekday from './weekday';
 
@@ -15,8 +15,8 @@ const WeeklyForcast = ({ week }) => {
         <>
             <Card className="weeklyForcast p-1 card ">
             {week.list
-                ? week.list.map((day) => {
-                    let time = sunTime(day.dt);
+                ? week.list.map(day => {
+                    let time = fetchTime(day.dt);
                     // console.log(time)
                     if (time === "3:00 pm") return <Weekday key={day.dt} day={day} />;
                     // console.log("Mapping",day)
