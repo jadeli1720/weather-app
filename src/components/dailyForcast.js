@@ -14,25 +14,16 @@ const DailyForcast = ({ day }) => {
 
     const [weatherIcon, setWeatherIcon] = useState('wi-day-sunny')
 
-    // console.log("Testing weather icons:",fetchDailyIcons(day.weather[0].id))
-    console.log("Day data", day)
-    // console.log("Sunrise and Sunset", sunTime(day.sys.sunset))
-    // console.log("sunTime of Day",degToCompass(day.wind.deg))
+    // console.log("Day data", day)
 
     useEffect(() => {
         if (day) {
             let weather = fetchDailyIcons(day.weather[0].id, day.sys.sunrise, day.sys.sunset, day.timezone)
             return setWeatherIcon(weather)
         }
-    }, []); //how do we get rid of this warning?
+    }, []); //how do we get rid of this warning? fetchDailyIcons?
 
-    // console.log("Setting Weather", weatherIcon)
-    console.log("Timezones", timezones(day.timezone))
-
-    // let timeZone = timezones(day.timezone)
-
-    // console.log(typeof timeZone)
-
+    
     return (
         <div className="card-container">
 
@@ -45,7 +36,6 @@ const DailyForcast = ({ day }) => {
                 {/* middle row */}
                 <div className="temp p-3" >
                     <div className="temp-top" >
-                        {/* Need to use different Icons. These aren't the best*/}
                         <div className="weatherIcon mr-1">
                             <i className={`wi ${weatherIcon}`}></i>
                         </div>
@@ -119,16 +109,3 @@ const DailyForcast = ({ day }) => {
 };
 
 export default DailyForcast;
-
-
-/*
-<p>Sunrise: </p>
-<Moment unix tz={timezones(city.timezone, tzArray)} format="h:mm a">
-    {city.sys.sunrise}
-</Moment>
-<p>Sunset: </p>
-<Moment unix tz={timezones(city.timezone, tzArray)} format="h:mm a">
-        {city.sys.sunset}
-</Moment>
-
-*/

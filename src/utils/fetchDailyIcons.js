@@ -1,5 +1,4 @@
 import { timezones } from "./timezones";
-// import Moment from "react-moment";
 import "moment-timezone";
 
 let moment = require("moment");
@@ -10,7 +9,7 @@ export const timeRange = (sunrise, sunset, timezone) => {
     let tZone = timezones(timezone);
     // console.log("Timezone",tZone);
 
-    //STEP 2: get and format current, sunrise, and sunset times 
+    //STEP 2: get and format current, sunrise, and sunset times in the timezone
     let currentTime = moment().tz(tZone);
     // console.log("Current Time", currentTime)
 
@@ -21,11 +20,11 @@ export const timeRange = (sunrise, sunset, timezone) => {
 
     //STEP 3: Compare
     if (moment(currentTime).isBetween(sunRise, sunSet, null, [])) {
-        console.log(true)
+        // console.log(true)
         return true
     }
     else {
-        console.log(false)
+        // console.log(false)
         return false
     }
 }
