@@ -81,7 +81,6 @@ function App() {
 
   useEffect(() => {
     fetchWeather();
-    searchCity()
   }, [ ]); //how do we get rid of this warning? fetchWeather?
 
   //pauses the application here if there is an error

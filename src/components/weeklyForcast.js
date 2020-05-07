@@ -15,7 +15,7 @@ const WeeklyForcast = ({ week }) => {
         <>
             <Card className="weeklyForcast p-1 card ">
             {week.list
-                ? week.list.map((day) => {
+                ? week.list.map(day => {
                     let time = fetchTime(day.dt);
                     // console.log(time)
                     if (time === "3:00 pm") return <Weekday key={day.dt} day={day} />;

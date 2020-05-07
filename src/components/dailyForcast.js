@@ -21,7 +21,7 @@ const DailyForcast = ({ day }) => {
             let weather = fetchDailyIcons(day.weather[0].id, day.sys.sunrise, day.sys.sunset, day.timezone)
             return setWeatherIcon(weather)
         }
-    }, []); //how do we get rid of this warning? fetchDailyIcons?
+    }, [day]);
 
     
     return (
