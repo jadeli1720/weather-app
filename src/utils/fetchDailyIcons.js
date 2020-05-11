@@ -182,13 +182,17 @@ export const fetchDailyIcons = (rangeId, sunRise, sunSet, timeZone) => {
         //scattered clouds: 25-50%
         case rangeId === 802:
             if (range) {
-                return "wi-day-cloudy";
+                return "wi-day-cloudy-high";
             } else {
-                return "wi-night-alt-cloudy";
+                return "wi-night-cloudy-high";
             }
         //broken clouds: 51-84%
         case rangeId === 803:
-            return 'wi-cloud';
+            if (range) {
+                return "wi-day-cloudy";
+            } else {
+                return "wi-night-cloudy";
+            }
         //broken clouds: 85-100%
         case rangeId === 804:
             return 'wi-cloudy';

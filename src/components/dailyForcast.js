@@ -9,7 +9,6 @@ import DateDisplay from './date'
 import "weather-icons/css/weather-icons.css";
 
 
-
 const DailyForcast = ({ day }) => {
 
     const [weatherIcon, setWeatherIcon] = useState('wi-day-sunny')
@@ -28,12 +27,12 @@ const DailyForcast = ({ day }) => {
         <div className="card-container">
 
             <Card className="card mb-2 p-3" >
-                {/* top row */}
+                {/* Top Row */}
                 <div className="dateDisplay" >
                     <h4 className="bold" >{day.name}, {day.sys.country}</h4>
                     <DateDisplay className="" />
                 </div>
-                {/* middle row */}
+                {/* Middle Row */}
                 <div className="temp p-3" >
                     <div className="temp-top" >
                         <div className="weatherIcon mr-1">
@@ -50,23 +49,24 @@ const DailyForcast = ({ day }) => {
                         <p className="text-center text-capitalize">{day.weather[0].description}</p>
                     </div>
                 </div>
-                {/* bottom row */}
+                {/* Bottom Row */}
                 <div className="metrics-row">
                     <div className=" row metrics mt-3" >
+                        {/* Wind Speed/Direction */}
                         <div className="col-4 column-1">
                             <div className="icons  ">
-                                <i className="wi wi-small-craft-advisory"></i>
+                                <i className="wi wi-strong-wind"></i>
                             </div>
                         </div>
                         <div className="leftMetricsDivider"></div>
                         <div className="col-4 column-2">
                             <p className="m-0 bold" >{degToCompass(day.wind.deg)}</p>
-                            <p className="m-0" >{mathRound(day.wind.speed)}</p>
+                            <p className="m-0" >{mathRound(day.wind.speed)} mph</p>
                         </div>
-
+                        {/* Humidity */}
                         <div className="col-4 column-1">
                             <div className="icons">
-                                <i className="wi wi-raindrop"></i>
+                                <i className="wi wi-humidity"></i>
                             </div>
                         </div>
                         <div className="rightMetricsDivider"></div>
@@ -76,6 +76,7 @@ const DailyForcast = ({ day }) => {
                         </div>
                     </div>
                     <div className=" row metrics mt-3 " >
+                        {/* Sunrise */}
                         <div className="col-4 column-1">
                             <div className="icons ">
                                 <i className="wi wi-sunrise "></i>
@@ -88,6 +89,7 @@ const DailyForcast = ({ day }) => {
                                 {day.sys.sunrise}
                             </Moment>
                         </div>
+                        {/* Sunset */}
                         <div className="col-4 column-1">
                             <div className="icons text-center ">
                                 <i className="wi wi-sunset "></i>
