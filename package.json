@@ -16,7 +16,7 @@
     "react-moment": "^0.9.7",
     "react-scripts": "3.4.0",
     "sass": "^1.25.0",
-    "weather-icons": "https://github.com/erikflowers/weather-icons.git"
+    "weather-icons2": "^2.0.10"
   },
   "scripts": {
     "start": "react-scripts start",

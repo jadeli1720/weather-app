@@ -6,7 +6,8 @@ import "moment-timezone";
 import DateDisplay from './date'
 
 // Icons from git project --> https://github.com/erikflowers/weather-icons
-import "weather-icons/css/weather-icons.css";
+import 'weather-icons2/css/weather-icons.min.css';
+import 'weather-icons2/css/weather-icons-wind.min.css';
 
 
 const DailyForcast = ({ day }) => {
