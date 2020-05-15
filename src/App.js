@@ -3,9 +3,9 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
 import "./App.scss";
 import SearchForm from "./components/searchForm";
-import DailyForcast from "./components/dailyForcast";
+import DailyForcast from "./components/dailyData/dailyForcast";
 import { Container } from "react-bootstrap";
-import WeeklyForcast from "./components/weeklyForcast";
+import WeeklyForcast from "./components/weeklyData/weeklyForcast";
 
 //Before moving to production, change.
 const Key = process.env.REACT_APP_KEY;
@@ -92,29 +92,13 @@ function App() {
     return <div>Oops. I'm sorry but something went wrong!</div>;
   }
 
-  // if(loading) {
-  //   return(
-  //     <div className="loading">
-  //           <div className="spinner"></div>
-  //     </div>
-  //   );
-  // }
-
   return (
     <div className="App">
       <Container>
         <h1 className="my-3">Weatherify</h1>
-        <SearchForm search={searchCity} />
+        <SearchForm search = {searchCity} />
         <DailyForcast day = {dailyData} loading = {loading}/>
-        <WeeklyForcast  week ={weeklyData} loading = {loading}/>
-          {/* {loading ? (
-            <div className="loading">
-              <div className="spinner"></div>
-            </div>
-          ) : (
-            <DailyForcast day={dailyData} />
-          )}
-          {loading ? <div></div> : <WeeklyForcast week={weeklyData} />} */}
+        <WeeklyForcast  week = {weeklyData} loading = {loading}/>
       </Container>
     </div>
   );

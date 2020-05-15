@@ -26,13 +26,13 @@ body {
     font-family: 'Roboto Condensed','Roboto', 'Helvetica Nueue', sans-serif;
     font-size: 100%;
 
-    // .card-container{
-    //     max-height: 100%;
-    //     height: 403px;
-    // }
+    .dailyForcast{
+        max-height: 403px;
+        height: 100%;
+    }
 }
 
-.loading{
+.dailyLoader{
     min-height: 400px;
     height: 100%;
     display:flex;
@@ -241,7 +241,16 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-
+    min-height: 105px;
+    height: 100%;
+    
+    .weeklyLoader {
+        min-height: 105px;
+        height: 100%;
+        display:flex;
+        justify-content: center;
+        align-items: center;
+    }
     
     .forcast{
         display: flex;

@@ -8,9 +8,9 @@ const DailyForcast = ({ day, loading }) => {
     return (
         <div className="card-container">
 
-            <Card className="card mb-2 p-3" >
+            <Card className="dailyForcast card mb-2 p-3" >
                 {loading ? (
-                    <div className="loading">
+                    <div className="dailyLoader">
                         <div className="spinner"></div>
                     </div>
                 ) : (

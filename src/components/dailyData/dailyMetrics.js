@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { mathRound, degToCompass, fetchDailyIcons, timezones } from '../utils/index';
-import { Card } from 'react-bootstrap';
+import { mathRound, degToCompass, fetchDailyIcons, timezones } from '../../utils/index';
 import Moment from "react-moment";
 import "moment-timezone";
 import DateDisplay from './date'
-
 import 'weather-icons2/css/weather-icons.min.css';
 import 'weather-icons2/css/weather-icons-wind.min.css';
 // Icons from git project -->  https://www.npmjs.com/package/weather-icons2, http://erikflowers.github.io/weather-icons/ 
