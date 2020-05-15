@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { mathRound, fetchWeekIcons, getDay } from '../utils/index';
+import { mathRound, fetchWeekIcons, getDay } from '../../utils/index';
 
 const Weekday = ({ day }) => {
 
@@ -17,12 +17,10 @@ const Weekday = ({ day }) => {
 //May need to change css styling
     return (
             <div className="forcast">
-                {/* {console.log("Day component",day.main.temp)} */}
                 <p className="text-center dayOfWeek bold">{getDay(day.dt)}</p>
                 <div className="text-center icon-container">
                     <i className={`wi ${weatherIcon}`}></i>
                 </div>
-                
                 <p className="text-center temperature">{mathRound(day.main.temp)}&deg;</p>
             </div>
     )

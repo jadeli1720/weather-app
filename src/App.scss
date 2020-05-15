@@ -10,7 +10,6 @@ $screen-phone: 456px;
     box-sizing: border-box;
 }
 
-//background?
 //media queries. So far I have been designing for mobile first. Many styles may change
 
 body {
@@ -26,6 +25,37 @@ body {
     height: 100%;
     font-family: 'Roboto Condensed','Roboto', 'Helvetica Nueue', sans-serif;
     font-size: 100%;
+
+    .dailyForcast{
+        min-height: 403px;
+        height: 100%;
+    }
+}
+
+.dailyLoader{
+    min-height: 300px;
+    height: 100%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+
+    .spinner{
+        width: 100px;
+        height: 100px;
+        border: 3px solid white;
+        border-color: white grey grey ;
+        border-radius: 50%;
+        animation: spin 1.3s linear infinite;
+    }
+}
+
+@keyframes spin {
+    to{
+        transform: rotate(0deg)
+    }
+    from{
+        transform: rotate(360deg)
+    }
 }
 
 .dayGrad{
@@ -33,23 +63,23 @@ body {
     background-image: linear-gradient(to bottom, #43a7df, #50acdf, #5db1e0, #68b5e0, #73bae1);
 }
 
-
-
 .container{
     max-width: 800px;
     width: 100%;
     height: 100%; 
     padding: 10px;
+    // background-color: rgba(245, 245, 245, 0.87);
 }
 
 .bold{
     font-weight: 600;
 }
 
-//glass like texture for data
-.card{
-    background-color: rgba(245, 245, 245, 0.87);
-}
+
+//glass like texture for data?
+// .card{
+//     background-color: rgba(245, 245, 245, 0.87);
+// }
 .dateDisplay {
     margin: 0px;
 
@@ -208,7 +238,16 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-
+    min-height: 120px;
+    height: 100%;
+    
+    .weeklyLoader {
+        min-height: 120px;
+        height: 100%;
+        display:flex;
+        justify-content: center;
+        align-items: center;
+    }
     
     .forcast{
         display: flex;
