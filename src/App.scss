@@ -27,13 +27,13 @@ body {
     font-size: 100%;
 
     .dailyForcast{
-        max-height: 403px;
+        min-height: 403px;
         height: 100%;
     }
 }
 
 .dailyLoader{
-    min-height: 400px;
+    min-height: 300px;
     height: 100%;
     display:flex;
     justify-content: center;
@@ -75,9 +75,6 @@ body {
     font-weight: 600;
 }
 
-.weather-container{
-    background-color: rgba(255, 9, 9, 0.445);
-}
 
 //glass like texture for data?
 // .card{
@@ -241,11 +238,11 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    min-height: 105px;
+    min-height: 120px;
     height: 100%;
     
     .weeklyLoader {
-        min-height: 105px;
+        min-height: 120px;
         height: 100%;
         display:flex;
         justify-content: center;
