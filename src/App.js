@@ -16,11 +16,12 @@ function App() {
   const [error, setError] = useState(null);
   const [dailyData, setDailyData] = useState([]);
   const [weeklyData, setWeeklyData] = useState([]);
+  const [background, setBackground] = useState('clearDay');
 
   const fetchWeather = () => {
     setLoading(true);
     setError(null);
-    // TODO: change this to geolocation
+    // TODO: change this to geolocation?
     // api urls
     //cnt number of days returned (from 1 to 16)
     let fetchDay = `https://api.openweathermap.org/data/2.5/weather?q=denver,us&APPID=${Key}&units=imperial`;
@@ -97,6 +98,7 @@ function App() {
       <Container>
         <h1 className="my-3">Weatherify</h1>
         <SearchForm search = {searchCity} />
+        {console.log("testing for type of data", dailyData)}
         <DailyForcast day = {dailyData} loading = {loading}/>
         <WeeklyForcast  week = {weeklyData} loading = {loading}/>
       </Container>

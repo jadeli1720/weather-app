@@ -13,8 +13,6 @@ const Weekday = ({ day }) => {
     }, [day]); 
 
     // console.log("weekday component",mathRound(day.main.temp))
-
-//May need to change css styling
     return (
             <div className="forcast">
                 <p className="text-center dayOfWeek bold">{getDay(day.dt)}</p>
