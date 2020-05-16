@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
-import "./App.scss";
 import SearchForm from "./components/searchForm";
 import DailyForcast from "./components/dailyData/dailyForcast";
-import { Container } from "react-bootstrap";
 import WeeklyForcast from "./components/weeklyData/weeklyForcast";
+import { changeBackground } from "./utils/changeBackground";
 
-//Before moving to production, change.
+import { Container } from "react-bootstrap";
+import "./App.scss";
+
+
 const Key = process.env.REACT_APP_KEY;
-// const Key = process.env.REACT_APP_WEATHERBIT_KEY
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -84,8 +85,19 @@ function App() {
       });
   };
 
+  //need to test how to get down to the data
+  console.log("testing for type of data", dailyData)
+
   useEffect(() => {
     fetchWeather();
+    let rangeId = dailyData.weather[0].id;
+    let sunrise = dailyData.sys.sunrise;
+    let sunset = dailyData.sys.sunset;
+    let timezone = dailyData.timezone;
+
+    let background = changeBackground(rangeId, sunrise, sunset, timezone)
+
+    setBackground(background)
   }, []); //how do we get rid of this warning? fetchWeather?
 
   //pauses the application here if there is an error
@@ -93,12 +105,13 @@ function App() {
     return <div>Oops. I'm sorry but something went wrong!</div>;
   }
 
+  // style={{backgroundImage: 'url('+require(`./assests/${background}.png`)+')' }}
+
   return (
-    <div className="App">
+    <div className="App" style={{backgroundImage: 'url('+ require(`./assests/${background}.png`) + ')' }} >
       <Container>
         <h1 className="my-3">Weatherify</h1>
         <SearchForm search = {searchCity} />
-        {console.log("testing for type of data", dailyData)}
         <DailyForcast day = {dailyData} loading = {loading}/>
         <WeeklyForcast  week = {weeklyData} loading = {loading}/>
       </Container>
