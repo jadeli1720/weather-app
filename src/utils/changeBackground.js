@@ -1,5 +1,4 @@
-import { timezones } from "./timezones";
-import { timeRange } from './fetchDailyIcons';
+import { timeRange } from './timeRange';
 
 
 export const changeBackground = (rangeId, sunRise, sunSet, timeZone) => {
