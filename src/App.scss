@@ -1,0 +1,280 @@
+@import "~bootstrap/scss/bootstrap.scss";
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400&display=swap');
+
+// MediaQueries
+$screen-sm: 678px;
+
+$screen-phone: 456px;
+
+*{
+    box-sizing: border-box;
+}
+
+//media queries. So far I have been designing for mobile first. Many styles may change
+
+body {
+    background-color: #43a7df;
+    margin: 0 auto;
+    padding:0;
+    // max-width: 1000px;
+    width: 100%;
+    height: 100%;
+    font-family: 'Roboto Condensed','Roboto', 'Helvetica Nueue', sans-serif;
+    font-size: 100%;
+
+    .dailyForcast{
+        min-height: 403px;
+        height: 100%;
+    }
+}
+
+.dailyLoader{
+    min-height: 300px;
+    height: 100%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+
+    .spinner{
+        width: 100px;
+        height: 100px;
+        border: 3px solid white;
+        border-color: white grey grey ;
+        border-radius: 50%;
+        animation: spin 1.3s linear infinite;
+    }
+}
+
+@keyframes spin {
+    to{
+        transform: rotate(0deg)
+    }
+    from{
+        transform: rotate(360deg)
+    }
+}
+
+// .dayGrad{
+//     background-color: #43a7df;
+//     background-image: linear-gradient(to bottom, #43a7df, #50acdf, #5db1e0, #68b5e0, #73bae1);
+// }
+
+.container{
+    max-width: 800px;
+    width: 100%;
+    height: 100%; 
+    padding: 10px;
+    // background-color: rgba(245, 245, 245, 0.87);
+}
+
+.bold{
+    font-weight: 600;
+}
+
+
+//glass like texture for data?
+// .card{
+//     background-color: rgba(245, 245, 245, 0.87);
+// }
+.dateDisplay {
+    margin: 0px;
+
+    h4{
+        margin: 0px;
+    }
+}
+
+.date {
+    font-size: .75rem;
+
+}
+
+.temp{
+    // border: 1px solid blue;
+    .temp-top{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+
+        h1{
+            margin: 0px;
+            font-size: 4.4rem;
+            font-weight: 500;
+        }
+
+        .weatherIcon{
+            font-size: 3.8rem;
+            i{
+                font-weight: lighter;
+            }
+            
+        }
+    }
+
+    .temp-mid{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        margin: 0px;
+        p{
+            margin: 0px;
+            font-size: .85rem;
+        }
+    }
+
+    .temp-btm{
+        p{
+            font-size: 1.0rem;
+        }
+    } 
+}
+
+.metrics-row{
+    // border: 1px red solid;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 auto;
+    max-width: 680px;
+    width: 100%;
+    height: 100%;
+}
+.metrics{
+    // border:1px solid teal;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+    max-width: 680px;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    
+    .column-1{
+        // border:1px solid purple;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0 auto;
+        max-width: 160px;
+        width: 100%;
+        height: 20%;
+
+        .icons{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width:50px;
+            height:35px;
+
+            i{
+                
+                font-size: 25px;
+            }
+        }
+    }
+
+    .column-2{
+        // border:1px solid orange;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-size: .80rem;
+        margin: 0 auto;
+        max-width: 160px;
+        width: 100%;
+        height: 20%;
+        // padding: 0;
+    }
+
+    .leftMetricsDivider{
+        &::before{
+            content:"";
+            top: 1%;
+            left: 25%; 
+            display: block;
+            position: absolute;
+            width: 1px;
+            height: 100%;
+            background: lightgrey;
+        }
+    }
+
+    .rightMetricsDivider{
+        &::before{
+            content:"";
+            top: 1%;
+            left: 75%; 
+            display: block;
+            position: absolute;
+            width: 1px;
+            height: 100%;
+            background: lightgrey;
+        }
+    }
+
+    @media screen and (max-width: $screen-sm){
+        .column-1, .column-2{
+            max-width: 100px;
+        }
+    }
+
+    @media screen and (max-width: $screen-phone){
+        .column-1, .column-2{
+            max-width: 75px;
+        }
+    }
+
+
+}
+
+.weeklyForcast {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    min-height: 120px;
+    height: 100%;
+    
+    .weeklyLoader {
+        min-height: 120px;
+        height: 100%;
+        display:flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .forcast{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        max-width: 77px;
+        width: 100%;
+
+        .dayOfWeek{
+            margin: 5px 0px 0px;
+        }
+
+        .icon-container{
+            margin: 10px 0 6px;
+                
+            i{
+                font-size: 28px;
+            }
+        }
+
+        
+
+        .temperature{
+            margin: 0px 0px 5px;
+        }
+        
+    }
+
+    
+    
+}
+
+
+
