@@ -4,6 +4,7 @@ import { timeRange } from './timeRange';
 export const changeBackground = (rangeId, sunRise, sunSet, timeZone) => {
     //Using timeRange function to set morning and night time icons based off of locations sunrise and sunset data. 
     let range = timeRange(sunRise, sunSet, timeZone)
+    // console.log("Range", range)
 
     switch(true) {
         //Thunderstorm --> 200's

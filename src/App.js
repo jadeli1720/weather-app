@@ -85,20 +85,33 @@ function App() {
       });
   };
 
-  //need to test how to get down to the data
-  console.log("testing for type of data", dailyData)
+  const fetchBackground = (city) => {
+    if (Object.keys(city).length) {
+      
+      let rangeId = city.weather[0].id;
+      let sunrise = city.sys.sunrise;
+      let sunset = city.sys.sunset;
+      let timezone = city.timezone;
+      
+      let background = changeBackground(rangeId, sunrise, sunset, timezone)
+      // console.log("Checking Background", background)
+      // setBackground(background)
+      
+    }
+  }
+
+  fetchBackground(dailyData)
+
 
   useEffect(() => {
+    
     fetchWeather();
-    let rangeId = dailyData.weather[0].id;
-    let sunrise = dailyData.sys.sunrise;
-    let sunset = dailyData.sys.sunset;
-    let timezone = dailyData.timezone;
-
-    let background = changeBackground(rangeId, sunrise, sunset, timezone)
-
-    setBackground(background)
+    
   }, []); //how do we get rid of this warning? fetchWeather?
+
+  useEffect(() => {
+    // fetchBackground(dailyData)
+  }, [])
 
   //pauses the application here if there is an error
   if (error) {
@@ -108,7 +121,8 @@ function App() {
   // style={{backgroundImage: 'url('+require(`./assests/${background}.png`)+')' }}
 
   return (
-    <div className="App" style={{backgroundImage: 'url('+ require(`./assests/${background}.png`) + ')' }} >
+    <div className="App"  style={{backgroundImage: 'url('+ require(`./assests/${background}.png`) + ')', position: "fixed", minHeight: "100%", minWidth: "100%",  backgroundPosition: 'center', backgroundSize: "cover"}} >
+      {/* {console.log("Weather", background)} */}
       <Container>
         <h1 className="my-3">Weatherify</h1>
         <SearchForm search = {searchCity} />

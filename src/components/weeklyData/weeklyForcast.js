@@ -1,5 +1,4 @@
 import React from 'react';
-import { fetchTime } from '../../utils/index';
 import { Card } from 'react-bootstrap';
 import Weekday from './weekday';
 
@@ -9,10 +8,10 @@ const WeeklyForcast = ({ week, loading }) => {
     const getWeekly = (data) => {
         return (data.list
             ? data.list.map(day => {
-                let time = fetchTime(day.dt);
-                // console.log(time)
-                if (time === "3:00 pm") return <Weekday key={day.dt} day={day} />;
-                // console.log("Mapping",day)
+                console.log("finding dt_txt", day.dt_txt)
+                let time = day.dt_txt.includes("12:00:00")
+                //if the time that includes the string == true, then return data for that time and map it
+                if (time){ return <Weekday key={day.dt} day={day} />};
             })
             : null)
     }
@@ -25,7 +24,6 @@ const WeeklyForcast = ({ week, loading }) => {
             <Card className="weeklyForcast p-1 card ">
                 {loading ? (
                     <div className="">
-
                     </div>
                 ) : (
                         getWeekly(week)

@@ -15,6 +15,7 @@ const Weekday = ({ day }) => {
     // console.log("weekday component",mathRound(day.main.temp))
     return (
             <div className="forcast">
+                {/* {console.log("Getting Data?",day)} */}
                 <p className="text-center dayOfWeek bold">{getDay(day.dt)}</p>
                 <div className="text-center icon-container">
                     <i className={`wi ${weatherIcon}`}></i>

@@ -10,7 +10,7 @@ import 'weather-icons2/css/weather-icons-wind.min.css';
 const DailyMetrics = ({ day, loading }) => {
     const [weatherIcon, setWeatherIcon] = useState('wi-day-sunny')
 
-    // console.log("Day data", day)
+    // console.log("Day data", day.weather[0].id)
 
     useEffect(() => {
         if (day) {
