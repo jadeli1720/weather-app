@@ -8,7 +8,7 @@ const WeeklyForcast = ({ week, loading }) => {
     const getWeekly = (data) => {
         return (data.list
             ? data.list.map(day => {
-                console.log("finding dt_txt", day.dt_txt)
+                // console.log("finding dt_txt", day.dt_txt)
                 let time = day.dt_txt.includes("12:00:00")
                 //if the time that includes the string == true, then return data for that time and map it
                 if (time){ return <Weekday key={day.dt} day={day} />};
