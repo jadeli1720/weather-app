@@ -35,8 +35,8 @@ const SearchForm = (props) => {
     }
 
     return (
-        <Form onSubmit={submitSearch} className="mb-3">
-            <InputGroup >
+        <Form onSubmit={submitSearch} className="my-3">
+            <InputGroup  size="lg">
                 <Form.Control
                     type="text"
                     name="city"

@@ -34,7 +34,7 @@ const DailyMetrics = ({ day, loading }) => {
                     </div>
                     <h1 className="pt-2 ml-2">{mathRound(day.main.temp)}&deg;</h1>
                 </div>
-                <div className="temp-mid " >
+                <div className="temp-mid  " >
                     <p className="pr-2" >{mathRound(day.main.temp_max)}&deg;/ {mathRound(day.main.temp_min)}&deg;</p>
 
                     <p>Feels Like: {mathRound(day.main.feels_like)}&deg; </p>
@@ -45,7 +45,7 @@ const DailyMetrics = ({ day, loading }) => {
             </div>
             {/* Bottom Row - Other Daily Metrics */}
             <div className="metrics-row">
-                <div className=" row metrics mt-3" >
+                <div className=" row metrics mt-4" >
                     {/* Wind Speed/Direction */}
                     <div className="col-4 column-1">
                         <div className="icons  ">
@@ -54,8 +54,8 @@ const DailyMetrics = ({ day, loading }) => {
                     </div>
                     <div className="leftMetricsDivider"></div>
                     <div className="col-4 column-2">
-                        <p className="m-0 bold" >{degToCompass(day.wind.deg)}</p>
-                        <p className="m-0" >{mathRound(day.wind.speed)} mph</p>
+                        <p className="m-0 bold " >{degToCompass(day.wind.deg)}</p>
+                        <p className="m-0 " >{mathRound(day.wind.speed)} mph</p>
                     </div>
                     {/* Humidity */}
                     <div className="col-4 column-1">
@@ -69,7 +69,7 @@ const DailyMetrics = ({ day, loading }) => {
                         <p className="m-0" >{mathRound(day.main.humidity)}%</p>
                     </div>
                 </div>
-                <div className=" row metrics mt-3 " >
+                <div className=" row metrics mt-3 mb-43" >
                     {/* Sunrise */}
                     <div className="col-4 column-1">
                         <div className="icons ">
