@@ -86,11 +86,14 @@ function App() {
   };
 
 
+  //weather
   useEffect(() => {
     fetchWeather();
     
   }, []); //how do we get rid of this warning? fetchWeather?
 
+
+  //background and app title
   useEffect(() => {
     if (Object.keys(dailyData).length) {
       let rangeId = dailyData.weather[0].id;
