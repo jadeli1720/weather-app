@@ -17,7 +17,7 @@ const Weekday = ({ day }) => {
             <div className="forcast">
                 {/* {console.log("Getting Data?",day)} */}
                 <p className="text-center dayOfWeek bold">{getDay(day.dt)}</p>
-                <div className="text-center icon-container">
+                <div className="text-center icon-container pt-2 pb-1">
                     <i className={`wi ${weatherIcon}`}></i>
                 </div>
                 <p className="text-center temperature">{mathRound(day.main.temp)}&deg;</p>
