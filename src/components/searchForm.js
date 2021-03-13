@@ -35,23 +35,23 @@ const SearchForm = (props) => {
     }
 
     return (
-        <Form onSubmit={submitSearch} className="my-3">
+        <Form onSubmit={submitSearch} className="my-3 formGroup">
             <InputGroup  size="lg">
                 <Form.Control
                     type="text"
                     name="city"
-                    placeholder="City"
+                    placeholder="Search by city..."
                     aria-label="City"
                     aria-describedby="City Input"
-                    className="p-1"
                     value={searchLocation}
                     // value={searchLocation.city}
                     onChange={handleSearch}
                 />
                 <InputGroup.Append>
-                    <Button type="submit" className="searchButton" value="Search">
+                    <Button type="submit" value="Search" variant="outline-secondary">
                         Weatherify
-                </Button>
+                        
+                    </Button>
                 </InputGroup.Append>
             </InputGroup>
         </Form>

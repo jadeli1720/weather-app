@@ -34,7 +34,7 @@ export const changeTitleColor = (rangeId, sunRise, sunSet, timeZone) => {
         //Snows --> 600's
         case rangeId >= 600 && rangeId <= 622:
             if(range){
-                return '051417'
+                return '112433'
             }else{
                 return 'c3b7c9'
             }
@@ -42,14 +42,14 @@ export const changeTitleColor = (rangeId, sunRise, sunSet, timeZone) => {
         //mist, smoke, haze
         case rangeId === 701 || rangeId === 721:
             if(range){
-                return '051417'
+                return '112433'
             }else{
                 return 'c3b7c9'
             } 
 
         //fog
         case rangeId === 741:
-            return '051417';
+            return '112433';
 
         //sand
         case   rangeId === 751:

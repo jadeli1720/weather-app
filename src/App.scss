@@ -19,6 +19,7 @@ body {
     height:100vh;
     font-family: 'Roboto Condensed','Roboto', 'Helvetica Nueue', sans-serif;
     font-size: 100%;
+    color: #112433;
 
     .dailyForcast{
         min-height: 403px;
@@ -60,21 +61,32 @@ body {
     height: 100%; 
     padding: 10px;
     // background-color: rgba(245, 245, 245, 0.87);
-    .inputForm {
+    .formGroup {
         // border:1px solid teal;
-        padding-right: 20px;
+        // padding-right: 20px;
+        -webkit-box-shadow: 3px 3px 10px 0px rgba(0,0,0,0.45);
+        -moz-box-shadow: 3px 3px 10px 0px rgba(0,0,0,0.45);
+        box-shadow: 3px 3px 10px 0px rgba(0,0,0,0.45);
     }
 
-    // header{
-    //     display: flex;
-    //     justify-content: space-between;
-    //     align-items: center;
+    .btn-outline-secondary {
+        border: 1px solid transparent;
+        background: rgba(255, 255, 255, 0.45);
+        background-clip: padding-box;
+        backdrop-filter: blur(2rem);
+        color: #112433;
+        transition: ease-in-out .8s;
 
-    //     .appTitle{
-    //         width: 30%
-    //     }
+        &:hover, &:focus{
 
-    // }
+            background: rgba(17, 36, 51, 0.45);
+            background-clip: padding-box;
+            backdrop-filter: blur(2rem);
+            color: whitesmoke;
+        }
+        
+    }
+    
 }
 
 .bold{
