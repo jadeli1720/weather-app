@@ -5,6 +5,7 @@ import SearchForm from "./components/searchForm";
 import DailyForcast from "./components/dailyData/dailyForcast";
 import WeeklyForcast from "./components/weeklyData/weeklyForcast";
 import { changeBackground } from "./utils/changeBackground";
+// import { clearDay } from "../public/img/clearDay.png";
 
 import { Container } from "react-bootstrap";
 import "./App.scss";
@@ -37,7 +38,7 @@ function App() {
       .then(
         axios.spread((...res) => {
           const resDay = res[0];
-          // console.log("Daily forcast", resDay.data)
+          // console.log("Daily forcast", resDay.data.weather)
           const resWeek = res[1];
           // console.log("Weekly forcast", resWeek.data.list)
           setDailyData(resDay.data);
@@ -85,46 +86,39 @@ function App() {
       });
   };
 
-  const fetchBackground = (city) => {
-    if (Object.keys(city).length) {
-      
-      let rangeId = city.weather[0].id;
-      let sunrise = city.sys.sunrise;
-      let sunset = city.sys.sunset;
-      let timezone = city.timezone;
-      
-      let background = changeBackground(rangeId, sunrise, sunset, timezone)
-      // console.log("Checking Background", background)
-      // setBackground(background)
-      
-    }
-  }
-
-  fetchBackground(dailyData)
-
 
   useEffect(() => {
-    
     fetchWeather();
     
   }, []); //how do we get rid of this warning? fetchWeather?
 
   useEffect(() => {
-    // fetchBackground(dailyData)
-  }, [])
+    if (Object.keys(dailyData).length) {
+      let rangeId = dailyData.weather[0].id;
+      let sunrise = dailyData.sys.sunrise;
+      let sunset = dailyData.sys.sunset;
+      let timezone = dailyData.timezone;
+
+      console.log("weather id", rangeId)
+      
+      let background = changeBackground(rangeId, sunrise, sunset, timezone)
+      setBackground(background)
+      // console.log("Checking Background", background)
+      
+    }
+  }, [dailyData])
+
+
 
   //pauses the application here if there is an error
   if (error) {
     return <div>Oops. I'm sorry but something went wrong!</div>;
   }
-
-  // style={{backgroundImage: 'url('+require(`./assests/${background}.png`)+')' }}
-
   return (
-    <div className="App"  style={{backgroundImage: 'url('+ require(`./assests/${background}.png`) + ')', position: "fixed", minHeight: "100%", minWidth: "100%",  backgroundPosition: 'center', backgroundSize: "cover"}} >
-      {/* {console.log("Weather", background)} */}
+    <div style={{backgroundImage: `url( /img/${background}.png )`,  height: "100vh",  backgroundPosition: 'center', backgroundRepeat:'none', backgroundSize: "cover"}}>
+      {/* {console.log("data", background)} */}
       <Container>
-        <h1 className="my-3">Weatherify</h1>
+        <h1 className="my-3 title">Weatherify</h1>
         <SearchForm search = {searchCity} />
         <DailyForcast day = {dailyData} loading = {loading}/>
         <WeeklyForcast  week = {weeklyData} loading = {loading}/>

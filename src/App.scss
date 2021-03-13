@@ -13,12 +13,10 @@ $screen-phone: 456px;
 //media queries. So far I have been designing for mobile first. Many styles may change
 
 body {
-    background-color: #43a7df;
     margin: 0 auto;
     padding:0;
-    // max-width: 1000px;
     width: 100%;
-    height: 100%;
+    height:100vh;
     font-family: 'Roboto Condensed','Roboto', 'Helvetica Nueue', sans-serif;
     font-size: 100%;
 
@@ -26,7 +24,166 @@ body {
         min-height: 403px;
         height: 100%;
     }
+
+    // Hack way of getting the background to change
+    //CLEAR
+    // .app-clearDay {
+    //     background-color: #43a7df;
+    //     background-image: url(./assests/clearDay.png);
+    //     background-position: center;
+    //     background-repeat: none;
+    //     background-size: cover;
+    //     height: 100vh;
+    // .title{
+    //     color: whitesmoke;
+    // }
+    // }
+    // .app-clearNight{
+    //     background-color: #1A1732;
+    //     background-image: url(./assests/clearNight.png); 
+    //     background-position: center;
+    //     background-repeat: none;
+    //     background-size: cover;
+    //     height: 100vh;
+
+    //     .title{
+    //         color: rgb(224, 209, 226);
+    //     }
+    // }
+    
+    // //CLOUDY
+    // .app-cloudyDay{
+    //     background-color: #43a7df;
+    //     background-image: url(./assests/cloudyDay.png); 
+    //     background-position: center;
+    //     background-repeat: none;
+    //     background-size: cover;
+    //     height: 100vh;
+    //     .title{
+    //         color: whitesmoke;
+    //     }
+        
+    // }
+    // .app-cloudyNight{
+    //     background-color: #061c29;
+    //     background-image: url(./assests/cloudyNight.png); 
+    //     background-position: center;
+    //     background-repeat: none;
+    //     background-size: cover;
+    //     height: 100vh;
+    //     .title{
+    //         color: whitesmoke;
+    //     }
+    // }
+
+    // //FOG
+    // .app-fog{
+    //     background-color: #c695d3;
+    //     background-image: url(./assests/fog.png);
+    //     background-position: center;
+    //     background-repeat: none;
+    //     background-size: cover;
+    //     height: 100vh; 
+    // }
+
+    // //RAINY
+    // .app-rainyDay{
+    //     background-color: #172d36;
+    //     background-image: url(./assests/rainyDay.png); 
+    //     background-position: center;
+    //     background-repeat: none;
+    //     background-size: cover;
+    //     height: 100vh;
+    //     .title{
+    //         color: rgb(236, 210, 163);
+    //     }
+    // }
+    // .app-rainyNight{
+    //     background-color: #071d2a;
+    //     background-image: url(./assests/rainyNight.png); 
+    //     background-position: center;
+    //     background-repeat: none;
+    //     background-size: cover;
+    //     height: 100vh;
+    //     .title{
+    //         color: rgb(255, 202, 141);
+    //     }
+    // }
+
+    //  //SANDSTORM
+    // .app-sandstorm{
+    //     background-color: #172d36;
+    //     background-image: url(./assests/sandstorm.png); 
+    //     background-position: center;
+    //     background-repeat: none;
+    //     background-size: cover;
+    //     height: 100vh;
+    //     .title{
+    //         color: whitesmoke;
+    //     }
+    // }
+
+    // //SNOW
+    // .app-snowDay{
+    //     background-color: #b3c1c7;
+    //     background-image: url(./assests/snowDay.png);
+    //     background-position: center;
+    //     background-repeat: none;
+    //     background-size: cover;
+    //     height: 100vh; 
+    // }
+    // .app-snowNight{
+    //     background-color: #241c2c;
+    //     background-image: url(./assests/snowNight.png);
+    //     background-position: center;
+    //     background-repeat: none;
+    //     background-size: cover;
+    //     height: 100vh; 
+    //     .title{
+    //         color: #c3b7c9;
+    //     }
+    // }
+
+    // //THUNDERSTORM
+    // .app-thunderstormDay{
+    //     background-color: #4d53a1;
+    //     background-image: url(./assests/thunderstormDay.png); 
+    //     background-position: center;
+    //     background-repeat: none;
+    //     background-size: cover;
+    //     height: 100vh;
+    //     .title{
+    //         color: rgb(255, 239, 235);
+    //     }
+    // }
+    // .app-thunderstormNight{
+    //     background-color: #0a1425;
+    //     background-image: url(./assests/thunderstormNight.png);
+    //     background-position: center;
+    //     background-repeat: none;
+    //     background-size: cover;
+    //     height: 100vh;
+    //     .title{
+    //         color: rgb(255, 239, 235);
+    //     }
+    // }
+
+    // //TORNADO
+    // .app-tornado{
+    //     background-color: #0a1425;
+    //     background-image: url(./assests/tornado.png);
+    //     background-position: center;
+    //     background-repeat: none;
+    //     background-size: cover;
+    //     height: 100vh; 
+    //     .title{
+    //         color: rgb(255, 229, 222);
+    //     }
+    // }
+
+    
 }
+
 
 .dailyLoader{
     min-height: 300px;
@@ -235,7 +392,6 @@ body {
     flex-direction: row;
     justify-content: space-evenly;
     min-height: 120px;
-    height: 100%;
     
     .weeklyLoader {
         min-height: 120px;

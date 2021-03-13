@@ -17,19 +17,19 @@ export const changeBackground = (rangeId, sunRise, sunSet, timeZone) => {
         //Drizzle --> 300's
         case rangeId >= 300 && rangeId <= 321:
             if(range){
-                return 'rainDay'
+                return 'rainyDay'
             }else{
                 return 'rainyNight'
             }
         //Rains --> 500's
         case rangeId >= 500 && rangeId <= 531:
             if(range){
-                return 'rainDay'
+                return 'rainyDay'
             }else{
                 return 'rainyNight'
             }
         //Snows --> 600's
-        case rangeId >= 600 && rangeId <= 522:
+        case rangeId >= 600 && rangeId <= 622:
             if(range){
                 return 'snowDay'
             }else{
@@ -47,7 +47,7 @@ export const changeBackground = (rangeId, sunRise, sunSet, timeZone) => {
             return "sandstorm";
         //tornado
         case rangeId === 781:
-            return "wi-tornado";
+            return "tornado";
         //Clear and Clouds --> 800's
         case rangeId === 800:
             if (range) {
