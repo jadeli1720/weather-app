@@ -15,6 +15,7 @@
     "react-dom": "^17.0.1",
     "react-moment": "^1.1.1",
     "react-scripts": "^4.0.3",
+    "react-shields-badge": "^2.1.0",
     "sass": "^1.25.0",
     "weather-icons2": "^2.0.10"
   },
